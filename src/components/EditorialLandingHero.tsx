@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Occupation271, occupations271 } from '../data/occupations271';
 import { EvidenceBadge } from './EvidenceBadge';
 import { ArrowDown, Check, Shuffle, Compass } from 'lucide-react';
-import heroHandsImage from '../assets/images/hero_hands.jpg';
+import { GenerativeCircuitWave } from './GenerativeCircuitWave';
 
 interface EditorialLandingHeroProps {
   activeOccupation: Occupation271;
@@ -154,59 +154,40 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
       className="relative min-h-[96vh] lg:min-h-screen bg-[#0C1016] text-[#EEF2F6] overflow-hidden flex flex-col justify-between border-b border-[#1E2633]"
     >
       {/* ========================================================================= */}
-      {/* POSTER ARTWORK LAYER: Frameless, screen/lighten blend, no rectangle       */}
+      {/* POSTER ARTWORK LAYER: Generative Circuit Wave with Radial Mask            */}
       {/* ========================================================================= */}
       <div
         className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden"
         aria-hidden="true"
       >
-        {/* Main Reaching Hands with Wavy Circuit Landscape (Spans across the poster) */}
+        {/* Generative Circuit Wave Graphic Layer */}
         <div
           className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out"
           style={{
-            transform: `translate3d(${mousePos.x * 0.35}px, ${mousePos.y * 0.35}px, 0)`
+            transform: `translate3d(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px, 0)`
           }}
         >
-          {/* 
-            The artwork is blended using mix-blend-mode: lighten + multi-stop radial & linear masks.
-            This completely eliminates the rectangular boundary so only the illuminated hands,
-            spark, and data wave streams glow organically against the page background.
-          */}
-          <img
-            src={heroHandsImage}
-            alt=""
-            className="w-full h-full object-cover object-[62%_36%] lg:object-[68%_38%] opacity-85"
-            style={{
-              mixBlendMode: 'lighten',
-              maskImage:
-                'radial-gradient(ellipse 80% 75% at 65% 42%, black 20%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.3) 72%, transparent 92%), linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%)',
-              WebkitMaskImage:
-                'radial-gradient(ellipse 80% 75% at 65% 42%, black 20%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.3) 72%, transparent 92%), linear-gradient(to bottom, transparent 0%, black 15%, black 82%, transparent 100%)',
-              maskComposite: 'intersect',
-              WebkitMaskComposite: 'destination-in'
-            }}
-          />
-
-          {/* Central light spark pulse between human and AI fingertips */}
-          <div
-            className="absolute top-[38%] left-[58%] lg:left-[66%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full pointer-events-none animate-pulse"
-            style={{
-              background:
-                'radial-gradient(circle, rgba(254, 249, 195, 1) 0%, rgba(34, 211, 238, 0.85) 30%, rgba(12, 16, 22, 0) 70%)',
-              filter: 'blur(2px)'
-            }}
+          <GenerativeCircuitWave
+            mousePos={mousePos}
+            className="w-full h-full"
           />
         </div>
 
         {/* 
-          OVERLAPPING FLOWING DATA WAVES:
-          Continuous topographical bezier wave lines that flow out from beneath the hands
-          and ripple across the entire poster width, weaving behind and between text.
+          OVERLAPPING CIRCUIT & DATA NODES (MIX-BLEND-MODE: SCREEN):
+          Natural vector overlay that flows seamlessly across the background,
+          reaching across and weaving directly behind the hero title and cards
+          with subtle CSS opacity transitions and radial mask edge blend.
         */}
         <svg
-          className="absolute inset-0 w-full h-full pointer-events-none transition-transform duration-500 ease-out"
+          className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out opacity-85 hover:opacity-100 z-[1]"
           style={{
-            transform: `translate3d(${mousePos.x * 0.18}px, ${mousePos.y * 0.18}px, 0)`
+            transform: `translate3d(${mousePos.x * 0.15}px, ${mousePos.y * 0.15}px, 0)`,
+            mixBlendMode: 'screen',
+            maskImage:
+              'radial-gradient(ellipse 92% 86% at 50% 50%, black 35%, rgba(0,0,0,0.8) 65%, transparent 95%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse 92% 86% at 50% 50%, black 35%, rgba(0,0,0,0.8) 65%, transparent 95%)'
           }}
           viewBox="0 0 1600 1000"
           fill="none"
@@ -215,15 +196,15 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
           <defs>
             <linearGradient id="waveGradientCyan" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.05" />
-              <stop offset="35%" stopColor="#22D3EE" stopOpacity="0.4" />
-              <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.6" />
+              <stop offset="35%" stopColor="#22D3EE" stopOpacity="0.45" />
+              <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.65" />
               <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.1" />
             </linearGradient>
 
             <linearGradient id="waveGradientAmber" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#F97316" stopOpacity="0.05" />
-              <stop offset="45%" stopColor="#F97316" stopOpacity="0.35" />
-              <stop offset="85%" stopColor="#F59E0B" stopOpacity="0.5" />
+              <stop offset="45%" stopColor="#F97316" stopOpacity="0.4" />
+              <stop offset="85%" stopColor="#F59E0B" stopOpacity="0.55" />
               <stop offset="100%" stopColor="#F97316" stopOpacity="0.05" />
             </linearGradient>
           </defs>
@@ -259,6 +240,32 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
             strokeWidth="1.2"
             strokeOpacity="0.15"
           />
+
+          {/* Circuit bus tracks that weave directly into the hero typography */}
+          <path
+            d="M 120 220 L 320 220 L 400 290 L 640 290 L 720 360 L 980 360"
+            stroke="#22D3EE"
+            strokeWidth="1"
+            strokeDasharray="5 7"
+            strokeOpacity="0.35"
+          />
+          <circle cx="320" cy="220" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
+          <circle cx="400" cy="290" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
+          <circle cx="640" cy="290" r="2.5" fill="#38BDF8" />
+          <circle cx="720" cy="360" r="3" fill="#0C1016" stroke="#F59E0B" strokeWidth="1.5" />
+
+          {/* PCB Circuit Traces echoing the Great Wave into the typography */}
+          <path
+            d="M 1280 340 L 1020 340 L 920 410 L 740 410 L 660 480 L 380 480"
+            stroke="#22D3EE"
+            strokeWidth="1.2"
+            strokeDasharray="4 6"
+            strokeOpacity="0.4"
+          />
+          <circle cx="1020" cy="340" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
+          <circle cx="920" cy="410" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
+          <circle cx="740" cy="410" r="3" fill="#0C1016" stroke="#F59E0B" strokeWidth="1.5" />
+          <circle cx="380" cy="480" r="3" fill="#22D3EE" />
 
           {/* Circuit Trace Connectors branching from waves to text anchor */}
           <path
