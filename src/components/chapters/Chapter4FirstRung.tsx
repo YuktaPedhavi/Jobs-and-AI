@@ -21,10 +21,10 @@ export const Chapter4FirstRung: React.FC<Chapter4FirstRungProps> = ({ onOpenEvid
             </span>
             <span className="text-xs font-medium text-stone-500">The Human Apprenticeship Paradox</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-stone-900 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-stone-900 tracking-tight leading-tight">
             THE MISSING FIRST RUNG: The Apprenticeship Paradox
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 font-serif italic max-w-3xl">
+          <p className="text-lg sm:text-xl text-stone-600 font-sans italic max-w-3xl">
             If artificial intelligence can perform beginner-level cognitive tasks in seconds, how does the next generation build the intuitive judgement required to become seasoned experts?
           </p>
         </div>

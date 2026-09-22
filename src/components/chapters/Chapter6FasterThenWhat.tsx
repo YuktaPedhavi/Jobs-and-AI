@@ -33,7 +33,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
             <span>PRODUCTIVITY & THE SKILL COMPRESSION</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             AI makes individual tasks faster. Who actually benefits?
           </h2>
 
@@ -48,7 +48,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
             <span className="text-xs font-mono uppercase text-[#22D3EE] font-semibold">
               Question 01
             </span>
-            <h4 className="text-lg font-serif font-bold text-[#EEF2F6]">
+            <h4 className="text-lg font-display font-extrabold tracking-tight text-[#EEF2F6]">
               Faster individual tasks?
             </h4>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -60,7 +60,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
             <span className="text-xs font-mono uppercase text-[#F59E0B] font-semibold">
               Question 02
             </span>
-            <h4 className="text-lg font-serif font-bold text-[#EEF2F6]">
+            <h4 className="text-lg font-display font-extrabold tracking-tight text-[#EEF2F6]">
               More productive companies?
             </h4>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -72,7 +72,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
             <span className="text-xs font-mono uppercase text-[#F43F5E] font-semibold">
               Question 03
             </span>
-            <h4 className="text-lg font-serif font-bold text-[#EEF2F6]">
+            <h4 className="text-lg font-display font-extrabold tracking-tight text-[#EEF2F6]">
               Higher worker wages?
             </h4>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -132,7 +132,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
             <div className="space-y-6 animate-in fade-in duration-200">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="space-y-1">
-                  <h4 className="text-lg font-serif font-bold text-[#EEF2F6]">
+                  <h4 className="text-lg font-display font-extrabold tracking-tight text-[#EEF2F6]">
                     Harvard / BCG Consulting Trial (Dell'Acqua et al.)
                   </h4>
                   <p className="text-xs text-[#94A3B8]">
@@ -227,7 +227,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
             <div className="space-y-6 animate-in fade-in duration-200">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div className="space-y-1">
-                  <h4 className="text-lg font-serif font-bold text-[#EEF2F6]">
+                  <h4 className="text-lg font-display font-extrabold tracking-tight text-[#EEF2F6]">
                     NBER Denmark Nationwide Administrative Tax Records
                   </h4>
                   <p className="text-xs text-[#94A3B8]">

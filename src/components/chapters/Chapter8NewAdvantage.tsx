@@ -146,7 +146,7 @@ export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({ onOpenEvidence }
             <span>WHAT BECOMES MORE VALUABLE?</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             When drafting is cheap, judgement becomes the prize.
           </h2>
 
@@ -183,7 +183,7 @@ export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({ onOpenEvidence }
               <span className="text-xs font-mono uppercase tracking-widest text-[#22D3EE]">
                 The Value Inversion
               </span>
-              <h3 className="text-xl font-serif font-bold text-[#EEF2F6] mt-0.5">
+              <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-0.5">
                 The 6 Essential Human Shifts
               </h3>
             </div>
@@ -206,7 +206,7 @@ export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({ onOpenEvidence }
                   }`}
                 >
                   <SIcon className={`w-4 h-4 ${isSelected ? 'text-[#22D3EE]' : 'text-[#94A3B8]'}`} />
-                  <span className="font-serif font-bold text-xs text-[#EEF2F6] leading-tight">
+                  <span className="font-display font-extrabold text-xs text-[#EEF2F6] leading-tight">
                     {shift.moreValuable.title}
                   </span>
                 </button>
@@ -225,7 +225,7 @@ export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({ onOpenEvidence }
                 <span className="text-[10px] font-mono text-[#94A3B8]">Commoditized by AI</span>
               </div>
 
-              <h4 className="text-xl font-serif font-bold text-[#EEF2F6]">
+              <h4 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
                 {activeShift.lessValuable.title}
               </h4>
 
@@ -249,10 +249,10 @@ export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({ onOpenEvidence }
               </div>
 
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#161C25] border border-[#22D3EE]/30 flex items-center justify-center text-[#22D3EE]">
+                <div className="w-8 h-8 rounded-lg bg-[#161C25] border border-[#222B38] flex items-center justify-center text-[#22D3EE]">
                   <IconComponent className="w-4 h-4" />
                 </div>
-                <h4 className="text-xl font-serif font-bold text-[#EEF2F6]">
+                <h4 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
                   {activeShift.moreValuable.title}
                 </h4>
               </div>

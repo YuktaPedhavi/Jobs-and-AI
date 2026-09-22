@@ -68,10 +68,10 @@ export const Chapter6WhoGetsValue: React.FC<Chapter6WhoGetsValueProps> = ({
             </span>
             <span className="text-xs font-medium text-stone-500">The Final Synthesis</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-stone-900 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-stone-900 tracking-tight leading-tight">
             WHO GETS THE VALUE? The Distribution of Surplus
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 font-serif italic max-w-3xl">
+          <p className="text-lg sm:text-xl text-stone-600 font-sans italic max-w-3xl">
             A faster worker does not automatically become a richer worker. When artificial intelligence creates massive cognitive abundance, four distinct economic destinations compete for the resulting surplus.
           </p>
         </div>

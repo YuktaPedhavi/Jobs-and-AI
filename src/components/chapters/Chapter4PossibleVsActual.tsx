@@ -22,7 +22,7 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
             <span>POSSIBLE ≠ ACTUAL</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             What an AI model can do in a test benchmark is rarely what happens in an office.
           </h2>
 
@@ -39,7 +39,7 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
               <span className="w-2.5 h-2.5 rounded-full bg-[#94A3B8]" />
               <span>Benchmark Potential (Laboratory)</span>
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#EEF2F6]">
+            <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
               80% of workers could see ≥10% tasks affected
             </h3>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -67,7 +67,7 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
               <span className="w-2.5 h-2.5 rounded-full bg-[#22D3EE]" />
               <span>Observed Workplace Use (Empirical)</span>
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#EEF2F6]">
+            <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
               Real adoption is selective, cautious, and collaborative
             </h3>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -213,7 +213,7 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
           {activeTab === 'ilo' && (
             <div className="space-y-4 animate-in fade-in duration-200">
               <div className="flex items-center justify-between">
-                <h4 className="font-serif font-bold text-lg text-[#EEF2F6]">
+                <h4 className="font-display font-extrabold tracking-tight text-lg text-[#EEF2F6]">
                   ILO 2025 Global Synthesis: The 25% vs 3.3% Discrepancy
                 </h4>
                 <EvidenceBadge id="C001" onClick={onOpenEvidence} labelOverride="ILO · Global Study" />
@@ -223,14 +223,14 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 bg-[#0C1016] rounded-xl border border-[#222B38]">
-                  <span className="text-3xl font-serif font-bold text-[#22D3EE] block font-mono">25% vs 3.3%</span>
+                  <span className="text-3xl font-mono font-bold text-[#22D3EE] block">25% vs 3.3%</span>
                   <span className="text-xs font-bold text-[#EEF2F6] block mt-1">Global Exposure vs Replacement Risk</span>
                   <p className="text-[11px] text-[#94A3B8] mt-1">
                     While 25% of global jobs feature some exposure, only 3.3% exist in the highest tier where entire roles are at imminent risk of wholesale substitution.
                   </p>
                 </div>
                 <div className="p-4 bg-[#0C1016] rounded-xl border border-[#222B38]">
-                  <span className="text-3xl font-serif font-bold text-[#F59E0B] block font-mono">34% vs 11%</span>
+                  <span className="text-3xl font-mono font-bold text-[#F59E0B] block">34% vs 11%</span>
                   <span className="text-xs font-bold text-[#EEF2F6] block mt-1">High-Income vs Low-Income Divide</span>
                   <p className="text-[11px] text-[#94A3B8] mt-1">
                     High-income economies possess far higher exposure (34%) due to knowledge work concentration, compared to low-income economies (11%) where physical labor dominates.

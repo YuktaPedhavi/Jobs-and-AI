@@ -35,10 +35,10 @@ export const Chapter3ValueGap: React.FC<Chapter3ValueGapProps> = ({
             </span>
             <span className="text-xs font-medium text-stone-500">The Economic Contradiction</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-stone-900 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-stone-900 tracking-tight leading-tight">
             THE VALUE GAP: Productivity ≠ Pay
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 font-serif italic max-w-3xl">
+          <p className="text-lg sm:text-xl text-stone-600 font-sans italic max-w-3xl">
             More productive does not automatically mean better paid. Economic history proves that technology gains often accrue to employers, capital, or consumers before workers see higher compensation.
           </p>
         </div>

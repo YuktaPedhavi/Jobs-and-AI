@@ -29,10 +29,10 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
         <div className="p-4 sm:p-5 rounded-2xl bg-[#161C25] border border-[#F59E0B]/30 text-[#EEF2F6] flex items-start gap-3.5">
           <ShieldAlert className="w-5 h-5 text-[#F59E0B] shrink-0 mt-0.5" />
           <div className="space-y-1 text-xs sm:text-sm leading-relaxed">
-            <span className="font-serif font-bold text-[#F59E0B] block">
+            <span className="font-display font-extrabold text-[#F59E0B] block tracking-tight">
               Methodological Disclosure: Geographic Context
             </span>
-            <p className="text-[#94A3B8]">
+            <p className="text-[#94A3B8] font-sans">
               The underlying dataset is 83.6% US-based. Applying US occupational task coefficients directly to India would produce distorted conclusions. This chapter is grounded strictly in macroeconomic research from the <strong className="text-[#EEF2F6]">IMF</strong>, <strong className="text-[#EEF2F6]">World Bank</strong>, and <strong className="text-[#EEF2F6]">NASSCOM</strong>.
             </p>
           </div>
@@ -45,7 +45,7 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
             <span>INDIA & GLOBAL LABOR ARBITRAGE</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             The end of cheap hours: How global knowledge work is shifting.
           </h2>
 
@@ -122,10 +122,10 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
               <span className="text-xs font-mono text-[#F43F5E] uppercase tracking-wider font-semibold">
                 Facing Pricing Pressure
               </span>
-              <h4 className="text-base font-serif font-bold text-[#EEF2F6]">
+              <h4 className="text-base font-display font-extrabold tracking-tight text-[#EEF2F6]">
                 Routine Global Delivery Hubs
               </h4>
-              <p className="text-xs text-[#94A3B8] leading-relaxed">
+              <p className="text-xs text-[#94A3B8] leading-relaxed font-sans">
                 Back-office accounting processing, basic manual software testing, and Tier-1 voice call centers face severe fee compression as international clients deploy internal AI agents to handle first-touch interactions.
               </p>
             </div>
@@ -134,10 +134,10 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
               <span className="text-xs font-mono text-[#22D3EE] uppercase tracking-wider font-semibold">
                 Surging Premium Demand
               </span>
-              <h4 className="text-base font-serif font-bold text-[#EEF2F6]">
+              <h4 className="text-base font-display font-extrabold tracking-tight text-[#EEF2F6]">
                 Architectural & Domain Engineers
               </h4>
-              <p className="text-xs text-[#94A3B8] leading-relaxed">
+              <p className="text-xs text-[#94A3B8] leading-relaxed font-sans">
                 Engineers who can design resilient distributed infrastructure, evaluate model hallucinations, and translate messy real-world corporate business rules into production AI workflows command rising global billing rates.
               </p>
             </div>

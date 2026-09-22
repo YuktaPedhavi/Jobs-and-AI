@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Database, Compass, Layers, ShieldCheck, X, ChevronRight, Sparkles } from 'lucide-react';
 import { occupations271 } from '../data/occupations271';
+import { ThemeToggle } from './ThemeToggle';
+import { useTheme } from '../context/ThemeContext';
 
 export interface ChapterMeta {
   id: string;
@@ -43,6 +45,8 @@ export const Workline: React.FC<WorklineProps> = ({
 
   const activeIndex = CHAPTER_LIST.findIndex((c) => c.id === activeChapter);
   const activeMeta = CHAPTER_LIST[activeIndex] || CHAPTER_LIST[0];
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const handleNavigate = (id: string) => {
     onSelectChapter(id);
@@ -54,16 +58,32 @@ export const Workline: React.FC<WorklineProps> = ({
       {/* DESKTOP WORKLINE: Ultra-clean, authoritative vertical spine on the far-left edge */}
       <nav
         aria-label="Story Workline Navigation"
-        className="hidden md:flex fixed left-0 top-0 bottom-0 w-12 flex-col items-center justify-between py-6 z-40 bg-[#0C1016]/95 backdrop-blur-md border-r border-[#1E2633] select-none shadow-[1px_0_16px_rgba(0,0,0,0.6)]"
+        className="hidden md:flex fixed left-0 top-0 bottom-0 w-12 flex-col items-center justify-between py-6 z-40 backdrop-blur-md select-none transition-colors duration-500 shadow-xl border-r"
+        style={{
+          backgroundColor: isDark ? 'rgba(6, 19, 41, 0.95)' : 'rgba(248, 247, 242, 0.95)',
+          borderColor: isDark ? '#163560' : '#d8dcce'
+        }}
       >
         {/* Top Observatory Mark / Story Map Trigger */}
         <button
           onClick={() => setStoryMapOpen(true)}
           title="Open Story Map (Atlas of 271 Professions)"
-          className="w-8 h-8 rounded-full flex items-center justify-center text-[#22D3EE] hover:text-[#EEF2F6] hover:bg-[#161C25] transition-all group relative cursor-pointer border border-[#222B38]"
+          className="w-8 h-8 rounded-full flex items-center justify-center transition-all group relative cursor-pointer border"
+          style={{
+            borderColor: isDark ? '#163560' : '#d8dcce',
+            color: isDark ? '#d7e63b' : '#1e5bb4'
+          }}
+          data-cursor-interactive="true"
         >
           <span className="font-mono text-xs font-bold tracking-tighter">WO</span>
-          <span className="absolute left-10 ml-2 px-2.5 py-1 bg-[#161C25] text-[#EEF2F6] text-xs font-mono rounded shadow-lg border border-[#222B38] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
+          <span
+            className="absolute left-10 ml-2 px-2.5 py-1 text-xs font-mono rounded shadow-lg border opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50"
+            style={{
+              backgroundColor: isDark ? '#0b1f3c' : '#ffffff',
+              color: isDark ? '#f7faeb' : '#061329',
+              borderColor: isDark ? '#163560' : '#d8dcce'
+            }}
+          >
             Atlas Map & Chapters
           </span>
         </button>
@@ -71,13 +91,17 @@ export const Workline: React.FC<WorklineProps> = ({
         {/* The Vertical Workline Wire */}
         <div className="relative flex flex-col items-center justify-center flex-1 py-6">
           {/* Subtle background rail line */}
-          <div className="absolute w-[1.5px] top-4 bottom-4 bg-[#1E2633]" />
+          <div
+            className="absolute w-[1.5px] top-4 bottom-4"
+            style={{ backgroundColor: isDark ? '#142e53' : '#cbd0c1' }}
+          />
 
           {/* Progress fill line */}
           <div
-            className="absolute w-[2px] top-4 bg-[#22D3EE] transition-all duration-300"
+            className="absolute w-[2px] top-4 transition-all duration-300"
             style={{
-              height: `${Math.max(4, (activeIndex / (CHAPTER_LIST.length - 1)) * 100)}%`
+              height: `${Math.max(4, (activeIndex / (CHAPTER_LIST.length - 1)) * 100)}%`,
+              backgroundColor: isDark ? '#d7e63b' : '#1e5bb4'
             }}
           />
 
@@ -97,13 +121,41 @@ export const Workline: React.FC<WorklineProps> = ({
                   <button
                     onClick={() => handleNavigate(chapter.id)}
                     aria-label={`Jump to Chapter ${chapter.num}: ${chapter.title}`}
-                    className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono transition-all cursor-pointer ${
-                      isActive
-                        ? 'bg-[#22D3EE] text-[#0C1016] ring-4 ring-[#22D3EE]/25 scale-110 font-bold'
+                    className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono transition-all cursor-pointer"
+                    style={{
+                      backgroundColor: isActive
+                        ? isDark
+                          ? '#d7e63b'
+                          : '#1e5bb4'
                         : isPast
-                        ? 'bg-[#161C25] text-[#EEF2F6] hover:bg-[#1E2633] hover:text-white'
-                        : 'bg-[#0C1016] text-[#94A3B8] border border-[#1E2633] hover:border-[#22D3EE] hover:text-[#EEF2F6]'
-                    }`}
+                        ? isDark
+                          ? '#0b1f3c'
+                          : '#ffffff'
+                        : isDark
+                        ? '#061329'
+                        : '#f8f7f2',
+                      color: isActive
+                        ? isDark
+                          ? '#061329'
+                          : '#ffffff'
+                        : isPast
+                        ? isDark
+                          ? '#f7faeb'
+                          : '#061329'
+                        : isDark
+                        ? '#5f7d9f'
+                        : '#6c829c',
+                      border: `1px solid ${
+                        isActive
+                          ? isDark
+                            ? '#d7e63b'
+                            : '#1e5bb4'
+                          : isDark
+                          ? '#163560'
+                          : '#d8dcce'
+                      }`
+                    }}
+                    data-cursor-interactive="true"
                   >
                     {chapter.num}
                   </button>
@@ -120,24 +172,44 @@ export const Workline: React.FC<WorklineProps> = ({
         </div>
 
         {/* Bottom Utility Controls */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2.5">
+          <ThemeToggle variant="compact" />
+
           <button
             onClick={() => onOpenEvidence()}
             title="Open Evidence Vault"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#94A3B8] hover:text-[#EEF2F6] hover:bg-[#161C25] transition-colors relative group cursor-pointer"
+            className="w-7 h-7 rounded-full flex items-center justify-center transition-colors relative group cursor-pointer"
+            style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+            data-cursor-interactive="true"
           >
-            <ShieldCheck className="w-4 h-4 text-[#22D3EE]" />
-            <span className="absolute left-9 ml-2 px-2.5 py-1 bg-[#161C25] text-[#EEF2F6] text-xs font-mono rounded shadow-lg border border-[#222B38] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
+            <ShieldCheck className="w-4 h-4" style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }} />
+            <span
+              className="absolute left-9 ml-2 px-2.5 py-1 text-xs font-mono rounded shadow-lg border opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50"
+              style={{
+                backgroundColor: isDark ? '#0b1f3c' : '#ffffff',
+                color: isDark ? '#f7faeb' : '#061329',
+                borderColor: isDark ? '#163560' : '#d8dcce'
+              }}
+            >
               Evidence Vault
             </span>
           </button>
           <button
             onClick={onOpenMethodology}
             title="Audit Methodology & Limitations"
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[#94A3B8] hover:text-[#EEF2F6] hover:bg-[#161C25] transition-colors relative group cursor-pointer"
+            className="w-7 h-7 rounded-full flex items-center justify-center transition-colors relative group cursor-pointer"
+            style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+            data-cursor-interactive="true"
           >
-            <Database className="w-3.5 h-3.5 text-[#38BDF8]" />
-            <span className="absolute left-9 ml-2 px-2.5 py-1 bg-[#161C25] text-[#EEF2F6] text-xs font-mono rounded shadow-lg border border-[#222B38] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
+            <Database className="w-3.5 h-3.5" style={{ color: isDark ? '#1e5bb4' : '#1e5bb4' }} />
+            <span
+              className="absolute left-9 ml-2 px-2.5 py-1 text-xs font-mono rounded shadow-lg border opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50"
+              style={{
+                backgroundColor: isDark ? '#0b1f3c' : '#ffffff',
+                color: isDark ? '#f7faeb' : '#061329',
+                borderColor: isDark ? '#163560' : '#d8dcce'
+              }}
+            >
               Audit Methodology
             </span>
           </button>
@@ -145,16 +217,31 @@ export const Workline: React.FC<WorklineProps> = ({
       </nav>
 
       {/* MOBILE PROGRESS KNOT: Minimalist floating pill at the bottom */}
-      <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
+      <div className="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
         <button
           onClick={() => setStoryMapOpen(true)}
-          className="flex items-center gap-2.5 px-4 py-2 bg-[#161C25]/95 text-[#EEF2F6] text-xs font-mono rounded-full shadow-2xl border border-[#222B38] backdrop-blur active:scale-95 transition-transform"
+          className="flex items-center gap-2 px-3.5 py-2 text-xs font-mono rounded-full shadow-2xl border backdrop-blur active:scale-95 transition-transform"
+          style={{
+            backgroundColor: isDark ? 'rgba(11, 31, 60, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+            borderColor: isDark ? '#163560' : '#d8dcce',
+            color: isDark ? '#f7faeb' : '#061329'
+          }}
+          data-cursor-interactive="true"
         >
-          <span className="inline-block w-2 h-2 rounded-full bg-[#22D3EE] animate-pulse" />
-          <span className="font-semibold text-[#22D3EE]">CH {activeMeta.num}</span>
-          <span className="text-[#EEF2F6] font-sans truncate max-w-[140px]">{activeMeta.shortTitle}</span>
-          <span className="text-[10px] text-[#22D3EE] font-mono ml-1">MAP ↗</span>
+          <span
+            className="inline-block w-2 h-2 rounded-full animate-pulse"
+            style={{ backgroundColor: isDark ? '#d7e63b' : '#1e5bb4' }}
+          />
+          <span className="font-semibold" style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}>
+            CH {activeMeta.num}
+          </span>
+          <span className="font-sans truncate max-w-[120px]">{activeMeta.shortTitle}</span>
+          <span className="text-[10px] font-mono ml-0.5" style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}>
+            MAP ↗
+          </span>
         </button>
+
+        <ThemeToggle variant="compact" />
       </div>
 
       {/* FULL-SCREEN STORY MAP / ATLAS OVERLAY */}
@@ -168,10 +255,10 @@ export const Workline: React.FC<WorklineProps> = ({
                   <Compass className="w-3.5 h-3.5" />
                   <span>The Work Observatory • Story Map</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#EEF2F6] mt-1">
+                <h2 className="text-xl sm:text-2xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-1">
                   Living Atlas of 271 Occupations
                 </h2>
-                <p className="text-xs sm:text-sm text-[#94A3B8] mt-0.5">
+                <p className="text-xs sm:text-sm text-[#94A3B8] mt-0.5 font-sans">
                   Follow the single, unbroken thread through empirical labour research.
                 </p>
               </div>
@@ -235,10 +322,10 @@ export const Workline: React.FC<WorklineProps> = ({
                             </span>
                           )}
                         </div>
-                        <h3 className="font-serif font-bold text-base text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
+                        <h3 className="font-display font-extrabold text-base tracking-tight text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
                           {c.title}
                         </h3>
-                        <p className="text-xs text-[#94A3B8] mt-0.5 max-w-xl">{c.thesis}</p>
+                        <p className="text-xs text-[#94A3B8] mt-0.5 max-w-xl font-sans">{c.thesis}</p>
                       </div>
                     </div>
                     <ChevronRight className="w-5 h-5 text-[#94A3B8] group-hover:text-[#22D3EE] group-hover:translate-x-0.5 transition-all mt-2 shrink-0" />

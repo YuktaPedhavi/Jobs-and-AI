@@ -18,8 +18,12 @@ import { MethodologyModal } from './components/MethodologyModal';
 import { occupations271, Occupation271 } from './data/occupations271';
 import { calculatedKeyFindings } from './data/researchData';
 import { Compass, ShieldCheck, Database, Sparkles, ArrowDown, Layers, HelpCircle } from 'lucide-react';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import { CustomCursor } from './components/CustomCursor';
 
-export const App: React.FC = () => {
+const MainApp: React.FC = () => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const [activeChapter, setActiveChapter] = useState<string>('ch00_which_changes');
   const [activeOccupation, setActiveOccupation] = useState<Occupation271>(() => {
     return (
@@ -72,7 +76,16 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C1016] text-[#EEF2F6] flex flex-col font-sans selection:bg-[#22D3EE] selection:text-[#0C1016]">
+    <div
+      className="min-h-screen flex flex-col font-sans transition-colors duration-500"
+      style={{
+        backgroundColor: isDark ? '#061329' : '#f8f7f2',
+        color: isDark ? '#f7faeb' : '#061329'
+      }}
+    >
+      {/* Precision Custom Desktop Cursor */}
+      <CustomCursor />
+
       {/* Editorial Workline Navigation (Desktop Left Spine + Mobile Progress Knot + Story Map) */}
       <Workline
         activeChapter={activeChapter}
@@ -106,10 +119,10 @@ export const App: React.FC = () => {
                 <Compass className="w-3.5 h-3.5 text-[#22D3EE]" />
                 <span>THE 271 OCCUPATIONS PARTICLE OBSERVATORY</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6]">
+              <h2 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
                 Explore the Living Atlas
               </h2>
-              <p className="text-sm sm:text-base text-[#94A3B8]">
+              <p className="text-sm sm:text-base text-[#94A3B8] font-sans">
                 Every point represents one of the 271 federal occupations mapped in the empirical dataset. Click any particle to anchor that profession across every chapter.
               </p>
             </div>
@@ -202,10 +215,10 @@ export const App: React.FC = () => {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 border-b border-[#1E2633]">
               <div>
-                <span className="font-serif font-bold text-[#EEF2F6] text-xl tracking-tight block">
+                <span className="font-display font-extrabold text-[#EEF2F6] text-xl tracking-tight block">
                   THE WORK OBSERVATORY
                 </span>
-                <p className="text-xs text-[#94A3B8] mt-1 max-w-lg leading-relaxed">
+                <p className="text-xs text-[#94A3B8] mt-1 max-w-lg leading-relaxed font-sans">
                   An open data-storytelling website synthesized from 271 occupation profiles, macroeconomic surveys, and verified field experiments. No synthetic quotes, no sponsored hype.
                 </p>
               </div>
@@ -268,6 +281,14 @@ export const App: React.FC = () => {
         />
       </div>
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <MainApp />
+    </ThemeProvider>
   );
 };
 

@@ -71,10 +71,10 @@ export const Chapter5NewAdvantage: React.FC<Chapter5NewAdvantageProps> = ({ onOp
             </span>
             <span className="text-xs font-medium text-stone-500">The Human Complement</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-stone-900 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-stone-900 tracking-tight leading-tight">
             THE NEW ADVANTAGE: From Production to Judgement
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 font-serif italic max-w-3xl">
+          <p className="text-lg sm:text-xl text-stone-600 font-sans italic max-w-3xl">
             When routine drafting and syntax generation become zero-marginal-cost commodities, human value shifts decisively from production toward verification, domain depth, and accountability.
           </p>
         </div>

@@ -90,7 +90,7 @@ export const Chapter1FourFutures: React.FC<Chapter1Props> = ({
             <span>271 JOBS. FOUR DIFFERENT FUTURES.</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             Exposure barely predicts whether a profession grows or declines.
           </h2>
 
@@ -365,7 +365,7 @@ export const Chapter1FourFutures: React.FC<Chapter1Props> = ({
                         SOC {occ.soc_code}
                       </span>
                     </div>
-                    <h4 className="text-base sm:text-lg font-serif font-bold text-[#EEF2F6]">
+                    <h4 className="text-base sm:text-lg font-display font-extrabold tracking-tight text-[#EEF2F6]">
                       {occ.occupation_title}
                     </h4>
                   </div>

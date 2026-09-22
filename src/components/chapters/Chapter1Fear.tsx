@@ -24,10 +24,10 @@ export const Chapter1Fear: React.FC<Chapter1FearProps> = ({ onOpenEvidence }) =>
             </span>
             <span className="text-xs font-medium text-stone-500">The Mental Model Shift</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-stone-900 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-stone-900 tracking-tight leading-tight">
             THE FEAR: Exposure Is Not Replacement
           </h2>
-          <p className="text-lg sm:text-xl text-stone-600 font-serif italic max-w-3xl">
+          <p className="text-lg sm:text-xl text-stone-600 font-sans italic max-w-3xl">
             “AI is coming for your job.” The binary headline treats work as a monolith. But a job is not a single task—it is a bundle of distinct capabilities.
           </p>
         </div>

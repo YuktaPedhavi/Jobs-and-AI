@@ -139,7 +139,7 @@ export const Chapter2CognitiveReach: React.FC<Chapter2Props> = ({
             <span>TASK MAP</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             Which parts of work are changing first?
           </h2>
 
@@ -185,7 +185,7 @@ export const Chapter2CognitiveReach: React.FC<Chapter2Props> = ({
                     </span>
                   </div>
                   <div>
-                    <h4 className="font-serif font-bold text-xs text-[#EEF2F6] leading-tight">
+                    <h4 className="font-display font-extrabold text-xs tracking-tight text-[#EEF2F6] leading-tight">
                       {task.name}
                     </h4>
                   </div>
@@ -198,11 +198,11 @@ export const Chapter2CognitiveReach: React.FC<Chapter2Props> = ({
           <div className="p-6 bg-[#0C1016] rounded-xl border border-[#222B38] space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#161C25] border border-[#22D3EE]/40 flex items-center justify-center text-[#22D3EE]">
+                <div className="w-10 h-10 rounded-xl bg-[#161C25] border border-[#222B38] flex items-center justify-center text-[#22D3EE]">
                   <IconComponent className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-serif font-bold text-[#EEF2F6]">
+                  <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
                     {activeTask.name}
                   </h3>
                   <span className="text-xs font-mono text-[#22D3EE]">

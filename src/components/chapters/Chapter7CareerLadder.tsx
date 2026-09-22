@@ -97,7 +97,7 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
             <span>THE CAREER LADDER PROBLEM</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             If junior tasks disappear, how do people learn to become senior?
           </h2>
 
@@ -116,7 +116,7 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
               </span>
               <EvidenceBadge id="C013" onClick={onOpenEvidence} labelOverride="PwC 2026 · Role Requirements" />
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#EEF2F6]">
+            <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
               7× Senior Skill Requirement in Entry Roles
             </h3>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -132,7 +132,7 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
               </span>
               <EvidenceBadge id="C014" onClick={onOpenEvidence} labelOverride="Stanford · ADP Youth Employment" />
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#EEF2F6]">
+            <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
               -19% Drop in Young Worker Hiring
             </h3>
             <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -148,7 +148,7 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
               <span className="text-xs font-mono uppercase tracking-widest text-[#22D3EE]">
                 The Three-Tier Apprenticeship Breakdown
               </span>
-              <h3 className="text-xl font-serif font-bold text-[#EEF2F6] mt-0.5">
+              <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-0.5">
                 The Disappearing First Rung
               </h3>
             </div>
@@ -246,7 +246,7 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
           {/* Provocative Thought Anchor */}
           <div className="p-5 rounded-xl bg-[#0C1016] border border-[#222B38] flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-1 max-w-2xl">
-              <span className="text-xs font-serif italic text-[#EEF2F6]">
+              <span className="text-xs font-sans italic text-[#EEF2F6]">
                 “A junior lawyer who never drafted a standard NDA will never know why a sentence is missing. Experience cannot be downloaded; it must be lived through repetition.”
               </span>
             </div>

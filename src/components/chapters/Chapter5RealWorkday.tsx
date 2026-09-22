@@ -155,7 +155,7 @@ export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence })
             <span>AI IN A REAL WORKDAY</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             How AI redistributes a real day's work.
           </h2>
 
@@ -203,7 +203,7 @@ export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence })
                 <span className="text-xs font-mono uppercase tracking-widest text-[#22D3EE]">
                   Field Study · {profile.roleSubtitle}
                 </span>
-                <h3 className="text-3xl sm:text-4xl font-serif font-bold text-[#EEF2F6]">
+                <h3 className="text-3xl sm:text-4xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
                   {profile.profession}
                 </h3>
               </div>
@@ -221,7 +221,7 @@ export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence })
           <div className="p-6 sm:p-8 space-y-8">
             {/* Quote block */}
             <blockquote className="border-l-2 border-[#22D3EE] pl-4 sm:pl-6 py-1">
-              <p className="text-base sm:text-lg font-serif italic text-[#EEF2F6] leading-relaxed">
+              <p className="text-base sm:text-lg font-sans italic text-[#EEF2F6] leading-relaxed">
                 {profile.quote}
               </p>
             </blockquote>

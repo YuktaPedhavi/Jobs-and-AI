@@ -29,12 +29,12 @@ export const Navigation: React.FC<NavigationProps> = ({
         <div className="flex items-center justify-between h-16">
           {/* Brand / Title */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-stone-900 text-stone-100 flex items-center justify-center font-serif font-bold text-sm shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-stone-900 text-stone-100 flex items-center justify-center font-display font-extrabold text-sm shadow-xs">
               W
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-display font-bold text-stone-900 text-sm tracking-tight sm:text-base">
+                <span className="font-display font-extrabold text-stone-900 text-sm tracking-tight sm:text-base uppercase">
                   THE NEW VALUE OF WORK
                 </span>
                 <span className="hidden sm:inline-block text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-200">

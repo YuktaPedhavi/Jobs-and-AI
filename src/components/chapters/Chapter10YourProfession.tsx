@@ -145,7 +145,7 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
             <span>LOOK UP YOUR PROFESSION</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#EEF2F6] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
             Find where your work sits in the atlas.
           </h2>
 
@@ -240,7 +240,7 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
                     </span>
                   )}
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6] mt-1">
+                <h3 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-1">
                   {activeOccupation.occupation_title}
                 </h3>
                 <span className="text-xs text-[#94A3B8] mt-0.5 block">
@@ -332,7 +332,7 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
               <span className="text-xs font-mono uppercase text-[#22D3EE] flex items-center gap-1.5 font-semibold">
                 <Lightbulb className="w-3.5 h-3.5" /> What Skill to Develop Next
               </span>
-              <h5 className="font-serif font-bold text-sm text-[#EEF2F6]">
+              <h5 className="font-display font-extrabold tracking-tight text-sm text-[#EEF2F6]">
                 {activeGuidance.nextSkill.title}
               </h5>
               <p className="text-xs text-[#94A3B8] leading-relaxed">
@@ -358,7 +358,7 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
                       Job B
                     </span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6] mt-1">
+                  <h3 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-1">
                     {compareOccupation.occupation_title}
                   </h3>
                   <span className="text-xs text-[#94A3B8] mt-0.5 block">
@@ -466,7 +466,7 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
                 <span className="text-xs font-mono uppercase text-[#22D3EE] flex items-center gap-1.5 font-semibold">
                   <Lightbulb className="w-3.5 h-3.5" /> What Skill to Develop Next
                 </span>
-                <h5 className="font-serif font-bold text-sm text-[#EEF2F6]">
+                <h5 className="font-display font-extrabold tracking-tight text-sm text-[#EEF2F6]">
                   {compareGuidance.nextSkill.title}
                 </h5>
                 <p className="text-xs text-[#94A3B8] leading-relaxed">

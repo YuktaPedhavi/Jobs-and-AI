@@ -144,11 +144,11 @@ export const Chapter0WhichChangesMore: React.FC<Chapter0Props> = ({
             <span>HOW AI IS CHANGING WORK · 271 OCCUPATIONS</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-[#EEF2F6] leading-[1.04]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-[#EEF2F6] leading-[1.04]">
             THE NEW VALUE OF WORK
           </h1>
 
-          <p className="text-xl sm:text-2xl font-serif text-[#94A3B8] font-normal max-w-2xl leading-relaxed">
+          <p className="text-xl sm:text-2xl font-sans text-[#94A3B8] font-normal max-w-2xl leading-relaxed">
             AI is changing work. But not every job in the same way.
           </p>
         </header>
@@ -160,7 +160,7 @@ export const Chapter0WhichChangesMore: React.FC<Chapter0Props> = ({
               <p className="text-xs font-mono uppercase tracking-widest text-[#22D3EE] font-semibold">
                 Will AI actually replace jobs?
               </p>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6] mt-1">
+              <h2 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-1">
                 Which job do you think AI affects more?
               </h2>
             </div>
@@ -197,7 +197,7 @@ export const Chapter0WhichChangesMore: React.FC<Chapter0Props> = ({
                   )}
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
                   {pair.jobA.title}
                 </h3>
 
@@ -259,7 +259,7 @@ export const Chapter0WhichChangesMore: React.FC<Chapter0Props> = ({
                   )}
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
                   {pair.jobB.title}
                 </h3>
 
@@ -319,7 +319,7 @@ export const Chapter0WhichChangesMore: React.FC<Chapter0Props> = ({
                 <EvidenceBadge id={pair.evidenceId} onClick={onOpenEvidence} labelOverride="BLS · Felten et al. Data" />
               </div>
 
-              <p className="text-sm sm:text-base font-serif text-[#EEF2F6] leading-relaxed">
+              <p className="text-sm sm:text-base font-sans text-[#EEF2F6] leading-relaxed">
                 {pair.editorialInsight}
               </p>
 

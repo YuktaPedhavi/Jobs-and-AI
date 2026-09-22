@@ -1,21 +1,199 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 @layer base {
   :root {
-    --font-display: 'Fraunces', Georgia, serif;
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Dark Mode Defaults */
+    --canvas-bg: #061329;
+    --layer-bg: #0b1f3c;
+    --layer-bg-subtle: #071731;
+    --border-geo: #163560;
+    --border-geo-subtle: #142e53;
+    --text-main: #f7faeb;
+    --text-muted: #9bb2cf;
+    --text-subtle: #5f7d9f;
+    --accent-lime: #d7e63b;
+    --accent-blue: #1e5bb4;
+  }
+
+  html.light, [data-theme="light"] {
+    --canvas-bg: #f8f7f2;
+    --layer-bg: #ffffff;
+    --layer-bg-subtle: #f1efe6;
+    --layer-bg-elevated: #f4f6fa;
+    --border-geo: #d5dde7;
+    --border-geo-subtle: #cbd4df;
+    --text-main: #061329;
+    --text-muted: #475e77;
+    --text-subtle: #5f748d;
+    --accent-lime: #7d8b04;
+    --accent-blue: #1e5bb4;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #0C1016;
-    color: #EEF2F6;
-    color-scheme: dark;
+    background-color: var(--canvas-bg);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, .font-display {
+  /* Major display titles: Syne ExtraBold, experimental and technology-inspired */
+  h1, h2, h3, h4, .font-display,
+  h1.font-serif, h2.font-serif, h3.font-serif, h4.font-serif {
     font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.025em;
   }
+
+  /* Neutral and highly readable body typography (never futuristic fonts for paragraphs) */
+  p, article, .font-sans, p.font-serif, span.font-serif {
+    font-family: var(--font-sans);
+  }
+
+  /* Data values, chart labels, sources and technical annotations: IBM Plex Mono */
+  code, kbd, samp, pre, .font-mono {
+    font-family: var(--font-mono) !important;
+  }
+}
+
+/* ========================================================================= */
+/* COMPREHENSIVE LIGHT THEME ENGINE                                          */
+/* Automatically remaps all hardcoded palette utility classes in light mode  */
+/* ========================================================================= */
+html.light {
+  color-scheme: light;
+}
+
+/* 1. Backgrounds & Surfaces */
+html.light .bg-\[\#0C1016\],
+html.light [class*="bg-[#0C1016]"] {
+  background-color: var(--canvas-bg) !important;
+}
+
+html.light .bg-\[\#161C25\],
+html.light [class*="bg-[#161C25]"] {
+  background-color: var(--layer-bg) !important;
+}
+
+html.light .bg-\[\#1A222E\],
+html.light [class*="bg-[#1A222E]"],
+html.light .bg-\[\#1C2430\],
+html.light [class*="bg-[#1C2430]"],
+html.light .bg-\[\#071731\],
+html.light [class*="bg-[#071731]"] {
+  background-color: var(--layer-bg-subtle) !important;
+}
+
+html.light .bg-\[\#0b1f3c\],
+html.light [class*="bg-[#0b1f3c]"] {
+  background-color: var(--layer-bg) !important;
+}
+
+/* Modals & Overlays */
+html.light .bg-\[\#0C1016\]\/90,
+html.light .bg-\[\#0C1016\]\/80,
+html.light .bg-black\/80 {
+  background-color: rgba(248, 247, 242, 0.88) !important;
+}
+
+/* 2. Text & Typography */
+html.light .text-\[\#EEF2F6\],
+html.light [class*="text-[#EEF2F6]"],
+html.light .text-\[\#f7faeb\],
+html.light [class*="text-[#f7faeb]"] {
+  color: var(--text-main) !important;
+}
+
+html.light .text-\[\#94A3B8\],
+html.light [class*="text-[#94A3B8]"],
+html.light .text-\[\#9bb2cf\],
+html.light [class*="text-[#9bb2cf]"] {
+  color: var(--text-muted) !important;
+}
+
+html.light .text-\[\#64748B\],
+html.light [class*="text-[#64748B]"],
+html.light .text-\[\#5f7d9f\],
+html.light [class*="text-[#5f7d9f]"] {
+  color: var(--text-subtle) !important;
+}
+
+/* Cyan & Sky accents remap to high-contrast Interactive Cobalt Blue in light mode */
+html.light .text-\[\#22D3EE\],
+html.light [class*="text-[#22D3EE]"],
+html.light .text-\[\#38BDF8\],
+html.light [class*="text-[#38BDF8]"] {
+  color: var(--accent-blue) !important;
+}
+
+/* 3. Borders & Dividers */
+html.light .border-\[\#1E2633\],
+html.light [class*="border-[#1E2633]"],
+html.light .border-\[\#163560\],
+html.light [class*="border-[#163560]"] {
+  border-color: var(--border-geo) !important;
+}
+
+html.light .border-\[\#222B38\],
+html.light [class*="border-[#222B38]"],
+html.light .border-\[\#142e53\],
+html.light [class*="border-[#142e53]"] {
+  border-color: var(--border-geo-subtle) !important;
+}
+
+html.light .border-\[\#22D3EE\],
+html.light [class*="border-[#22D3EE]"],
+html.light .border-\[\#38BDF8\],
+html.light [class*="border-[#38BDF8]"] {
+  border-color: var(--accent-blue) !important;
+}
+
+/* 4. Interactive Forms & Inputs */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #061329 !important;
+  border-color: var(--border-geo) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: var(--text-subtle) !important;
+}
+
+/* 5. Hover & Active States */
+html.light .hover\:bg-\[\#1A222E\]:hover,
+html.light .hover\:bg-\[\#222B38\]:hover,
+html.light .hover\:bg-\[\#161C25\]:hover {
+  background-color: #edf2f7 !important;
+}
+
+html.light .hover\:text-\[\#EEF2F6\]:hover {
+  color: var(--text-main) !important;
+}
+
+html.light .hover\:border-\[\#38BDF8\]:hover,
+html.light .hover\:border-\[\#22D3EE\]:hover {
+  border-color: var(--accent-blue) !important;
+}
+
+/* 6. Ring & Focus Highlights */
+html.light .ring-\[\#22D3EE\]\/25,
+html.light .focus\:border-\[\#22D3EE\]:focus {
+  border-color: var(--accent-blue) !important;
 }
 
 /* Custom editorial scrollbar */
@@ -24,14 +202,14 @@
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0C1016;
+  background: var(--canvas-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #222B38;
+  background: var(--border-geo);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--accent-blue);
 }
 
 @media (prefers-reduced-motion: reduce) {

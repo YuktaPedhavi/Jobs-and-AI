@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Occupation271, occupations271 } from '../data/occupations271';
 import { EvidenceBadge } from './EvidenceBadge';
-import { ArrowDown, Check, Shuffle, Compass } from 'lucide-react';
-import { GenerativeCircuitWave } from './GenerativeCircuitWave';
+import { ThemeToggle } from './ThemeToggle';
+import { useTheme } from '../context/ThemeContext';
+import { InteractiveOrreryArtwork } from './InteractiveOrreryArtwork';
+import { ArrowDown, Check, Shuffle, Compass, Sparkles, HelpCircle } from 'lucide-react';
 
 interface EditorialLandingHeroProps {
   activeOccupation: Occupation271;
@@ -35,17 +37,17 @@ const CURIOSITY_PAIRS: CuriosityPair[] = [
     jobA: {
       title: 'Graphic Designer',
       socCode: '27-1024',
-      category: 'Arts & Design',
+      category: 'Arts & Media',
       exposure: 0.411,
       growth: 2.0,
       wage: 61300,
-      aiTouches: 'Layout drafts, asset variations, background fills',
+      aiTouches: 'Layout drafts, asset variations, image cleanup',
       humanValue: 'Creative direction, visual taste, cultural context'
     },
     jobB: {
-      title: 'Accountant',
+      title: 'Accountant & Auditor',
       socCode: '13-2011',
-      category: 'Business & Financial',
+      category: 'Business & Finance',
       exposure: 0.672,
       growth: 4.0,
       wage: 79880,
@@ -54,14 +56,14 @@ const CURIOSITY_PAIRS: CuriosityPair[] = [
     },
     curiosityPrompt: 'Creative vs Analytical',
     editorialInsight:
-      'Many assume AI hits visual designers harder than numbers-driven accountants. In reality, accounting tasks are more structured and rule-bound (67% exposure vs 41%). Yet both occupations have positive expected job growth. AI changes the daily workflow—it does not simply eliminate the profession.',
+      'Many assume AI hits visual designers harder than numbers-driven accountants. In reality, accounting tasks are more rule-bound (67% exposure vs 41%). Yet both occupations have positive expected job growth. AI changes daily workflows—it does not simply eliminate the profession.',
     evidenceId: 'C001'
   },
   {
     jobA: {
       title: 'Software Developer',
       socCode: '15-1252',
-      category: 'Computer & Math',
+      category: 'Computer & Logic',
       exposure: 0.706,
       growth: 17.0,
       wage: 132270,
@@ -71,7 +73,7 @@ const CURIOSITY_PAIRS: CuriosityPair[] = [
     jobB: {
       title: 'Elementary Teacher',
       socCode: '25-2021',
-      category: 'Education',
+      category: 'Education & Care',
       exposure: 0.182,
       growth: 1.0,
       wage: 63680,
@@ -87,7 +89,7 @@ const CURIOSITY_PAIRS: CuriosityPair[] = [
     jobA: {
       title: 'Customer Service Rep',
       socCode: '43-4051',
-      category: 'Office & Admin',
+      category: 'Office & Support',
       exposure: 0.671,
       growth: -5.0,
       wage: 42830,
@@ -97,14 +99,14 @@ const CURIOSITY_PAIRS: CuriosityPair[] = [
     jobB: {
       title: 'Financial Advisor',
       socCode: '13-2052',
-      category: 'Finance',
+      category: 'Financial Strategy',
       exposure: 0.710,
       growth: 10.0,
       wage: 102140,
       aiTouches: 'Portfolio simulations, market summary briefings, tax optimization',
       humanValue: 'Personal empathy during market panics, life-transition trust'
     },
-    curiosityPrompt: 'Routine Service vs Fiduciary Trust',
+    curiosityPrompt: 'Routine Support vs Fiduciary Trust',
     editorialInsight:
       'Both roles share high AI task overlap (~67–71%). But customer support is projected to decline (-5%) while personal financial advising expands (+10%). Why? Trust, liability, and personal relationships command an increasing premium when routine information is commoditized.',
     evidenceId: 'C003'
@@ -117,18 +119,21 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
   onOpenEvidence,
   onScrollToChapter1
 }) => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   const [selectedPairIndex, setSelectedPairIndex] = useState(0);
   const [chosenSide, setChosenSide] = useState<'A' | 'B' | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const pair = CURIOSITY_PAIRS[selectedPairIndex];
 
-  // Subtle restrained parallax on mouse move (only desktop, non-reduced motion)
+  // Restrained parallax tracking on desktop
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (window.innerWidth < 1024) return;
-      const x = (e.clientX / window.innerWidth - 0.5) * 16;
-      const y = (e.clientY / window.innerHeight - 0.5) * 16;
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
       setMousePos({ x, y });
     };
 
@@ -151,258 +156,285 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
   return (
     <header
       id="ch00_which_changes"
-      className="relative min-h-[96vh] lg:min-h-screen bg-[#0C1016] text-[#EEF2F6] overflow-hidden flex flex-col justify-between border-b border-[#1E2633]"
+      className="relative min-h-[96vh] lg:min-h-screen overflow-hidden flex flex-col justify-between transition-colors duration-500"
+      style={{
+        backgroundColor: isDark ? '#061329' : '#f8f7f2',
+        color: isDark ? '#f7faeb' : '#061329',
+        borderBottom: `1px solid ${isDark ? '#163560' : '#d8dcce'}`
+      }}
     >
       {/* ========================================================================= */}
-      {/* POSTER ARTWORK LAYER: Generative Circuit Wave with Radial Mask            */}
+      {/* INTEGRATED 2D CONCEPTUAL ARTWORK (Positioned right & flowing behind)       */}
+      {/* Blends smoothly into canvas with NO visible rectangular frame or box     */}
       {/* ========================================================================= */}
       <div
-        className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden"
+        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
         aria-hidden="true"
       >
-        {/* Generative Circuit Wave Graphic Layer */}
-        <div
-          className="absolute inset-0 w-full h-full transition-transform duration-700 ease-out"
-          style={{
-            transform: `translate3d(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px, 0)`
-          }}
-        >
-          <GenerativeCircuitWave
+        <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[62%] h-full opacity-90 transition-opacity duration-700">
+          <InteractiveOrreryArtwork
             mousePos={mousePos}
-            className="w-full h-full"
+            onSelectOccupation={onSelectOccupation}
+            className="w-full h-full pointer-events-auto"
           />
         </div>
 
-        {/* 
-          OVERLAPPING CIRCUIT & DATA NODES (MIX-BLEND-MODE: SCREEN):
-          Natural vector overlay that flows seamlessly across the background,
-          reaching across and weaving directly behind the hero title and cards
-          with subtle CSS opacity transitions and radial mask edge blend.
-        */}
-        <svg
-          className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out opacity-85 hover:opacity-100 z-[1]"
+        {/* Ambient atmospheric linear gradients to ensure total edge integration */}
+        <div
+          className="absolute inset-y-0 left-0 w-full lg:w-[50%] pointer-events-none transition-colors duration-500"
           style={{
-            transform: `translate3d(${mousePos.x * 0.15}px, ${mousePos.y * 0.15}px, 0)`,
-            mixBlendMode: 'screen',
-            maskImage:
-              'radial-gradient(ellipse 92% 86% at 50% 50%, black 35%, rgba(0,0,0,0.8) 65%, transparent 95%)',
-            WebkitMaskImage:
-              'radial-gradient(ellipse 92% 86% at 50% 50%, black 35%, rgba(0,0,0,0.8) 65%, transparent 95%)'
+            background: isDark
+              ? 'linear-gradient(to right, #061329 55%, rgba(6, 19, 41, 0.8) 80%, transparent 100%)'
+              : 'linear-gradient(to right, #f8f7f2 55%, rgba(248, 247, 242, 0.8) 80%, transparent 100%)'
           }}
-          viewBox="0 0 1600 1000"
-          fill="none"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="waveGradientCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#22D3EE" stopOpacity="0.05" />
-              <stop offset="35%" stopColor="#22D3EE" stopOpacity="0.45" />
-              <stop offset="70%" stopColor="#38BDF8" stopOpacity="0.65" />
-              <stop offset="100%" stopColor="#22D3EE" stopOpacity="0.1" />
-            </linearGradient>
-
-            <linearGradient id="waveGradientAmber" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#F97316" stopOpacity="0.05" />
-              <stop offset="45%" stopColor="#F97316" stopOpacity="0.4" />
-              <stop offset="85%" stopColor="#F59E0B" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#F97316" stopOpacity="0.05" />
-            </linearGradient>
-          </defs>
-
-          {/* Flowing Wave Crest 1 (Cyan Data Stream) */}
-          <path
-            d="M -50 480 C 320 440, 520 540, 820 490 C 1120 440, 1340 520, 1650 470"
-            stroke="url(#waveGradientCyan)"
-            strokeWidth="1.5"
-            strokeDasharray="4 8"
-          />
-
-          {/* Flowing Wave Crest 2 (Human Coral Stream) */}
-          <path
-            d="M -50 560 C 280 620, 580 510, 890 580 C 1190 640, 1420 530, 1650 570"
-            stroke="url(#waveGradientAmber)"
-            strokeWidth="1.5"
-            strokeDasharray="2 6"
-          />
-
-          {/* Flowing Wave Crest 3 (Deep Topographical Ridge) */}
-          <path
-            d="M -50 650 C 350 610, 680 710, 1020 640 C 1320 580, 1500 660, 1650 630"
-            stroke="#22D3EE"
-            strokeWidth="1"
-            strokeOpacity="0.22"
-          />
-
-          {/* Flowing Wave Crest 4 (Subtle Ambient Ocean Wave) */}
-          <path
-            d="M -50 740 C 240 790, 620 700, 940 760 C 1240 810, 1450 720, 1650 750"
-            stroke="#38BDF8"
-            strokeWidth="1.2"
-            strokeOpacity="0.15"
-          />
-
-          {/* Circuit bus tracks that weave directly into the hero typography */}
-          <path
-            d="M 120 220 L 320 220 L 400 290 L 640 290 L 720 360 L 980 360"
-            stroke="#22D3EE"
-            strokeWidth="1"
-            strokeDasharray="5 7"
-            strokeOpacity="0.35"
-          />
-          <circle cx="320" cy="220" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
-          <circle cx="400" cy="290" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
-          <circle cx="640" cy="290" r="2.5" fill="#38BDF8" />
-          <circle cx="720" cy="360" r="3" fill="#0C1016" stroke="#F59E0B" strokeWidth="1.5" />
-
-          {/* PCB Circuit Traces echoing the Great Wave into the typography */}
-          <path
-            d="M 1280 340 L 1020 340 L 920 410 L 740 410 L 660 480 L 380 480"
-            stroke="#22D3EE"
-            strokeWidth="1.2"
-            strokeDasharray="4 6"
-            strokeOpacity="0.4"
-          />
-          <circle cx="1020" cy="340" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
-          <circle cx="920" cy="410" r="3" fill="#0C1016" stroke="#22D3EE" strokeWidth="1.5" />
-          <circle cx="740" cy="410" r="3" fill="#0C1016" stroke="#F59E0B" strokeWidth="1.5" />
-          <circle cx="380" cy="480" r="3" fill="#22D3EE" />
-
-          {/* Circuit Trace Connectors branching from waves to text anchor */}
-          <path
-            d="M 680 500 L 540 500 L 460 560 L 220 560"
-            stroke="#22D3EE"
-            strokeWidth="1"
-            strokeDasharray="3 5"
-            strokeOpacity="0.3"
-          />
-
-          {/* Data Nodes floating along the waves */}
-          <circle cx="820" cy="490" r="3.5" fill="#22D3EE" opacity="0.9" />
-          <circle cx="890" cy="580" r="3" fill="#F97316" opacity="0.85" />
-          <circle cx="540" cy="500" r="2.5" fill="#EEF2F6" opacity="0.7" />
-          <circle cx="1020" cy="640" r="3" fill="#22D3EE" opacity="0.6" />
-          <circle cx="460" cy="560" r="2" fill="#F59E0B" opacity="0.8" />
-          <circle cx="1190" cy="640" r="2.5" fill="#22D3EE" opacity="0.75" />
-        </svg>
-
-        {/* Ambient tonal gradients for complete soft fade into #0C1016 */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0C1016] via-transparent to-transparent h-48 bottom-0" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0C1016] via-transparent to-transparent h-28 top-0" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0C1016] via-[#0C1016]/40 to-transparent w-96 left-0" />
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-32 pointer-events-none transition-colors duration-500"
+          style={{
+            background: isDark
+              ? 'linear-gradient(to top, #061329 20%, transparent)'
+              : 'linear-gradient(to top, #f8f7f2 20%, transparent)'
+          }}
+        />
       </div>
 
       {/* ========================================================================= */}
-      {/* POSTER COMPOSITION: Unified typography, integrated data & interactions    */}
+      {/* EDITORIAL POSTER CONTENT LAYER (Unified typography and data interaction)   */}
       {/* ========================================================================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-12 w-full flex-1 flex flex-col justify-between">
-        {/* Top Observatory Masthead */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-10 w-full flex-1 flex flex-col justify-between">
+        {/* Top Observatory Masthead & Visible Theme Toggle */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161C25]/80 border border-[#222B38] text-[#22D3EE] text-xs font-mono tracking-wider backdrop-blur-md">
-            <Compass className="w-3.5 h-3.5 text-[#22D3EE]" />
-            <span>THE WORK OBSERVATORY · LIVING ATLAS ACROSS 271 PROFESSIONS</span>
+          <div className="flex items-center gap-3">
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-mono tracking-wider backdrop-blur-md transition-colors"
+              style={{
+                backgroundColor: isDark ? 'rgba(11, 31, 60, 0.8)' : '#ffffff',
+                borderColor: isDark ? '#163560' : '#d5dde7',
+                color: isDark ? '#d7e63b' : '#1e5bb4'
+              }}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              <span>THE WORK OBSERVATORY · 271 PROFESSIONS</span>
+            </div>
+
+            <div className="hidden sm:inline-flex items-center gap-2 text-xs font-mono opacity-70">
+              <span
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ backgroundColor: isDark ? '#d7e63b' : '#1e5bb4' }}
+              />
+              <span>Empirical BLS & O*NET Research</span>
+            </div>
           </div>
 
-          <div className="hidden sm:flex items-center gap-3 font-mono text-[11px] text-[#94A3B8]">
-            <span className="inline-flex items-center gap-1.5 text-[#EEF2F6]">
-              <span className="w-2 h-2 rounded-full bg-[#22D3EE] animate-pulse" />
-              <span>Real-World Empirical Dataset</span>
-            </span>
-            <span>·</span>
-            <span>BLS & O*NET Benchmarks</span>
+          {/* Visible Dark / Light Theme Toggle Button */}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
           </div>
         </div>
 
-        {/* Main Poster Typography (Unified display, gracefully interwoven with the artwork) */}
-        <div className="my-auto py-8 sm:py-12 max-w-4xl space-y-6">
-          <div className="space-y-3">
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-serif font-bold tracking-tight text-[#EEF2F6] leading-[0.98] drop-shadow-sm">
-              THE NEW VALUE <br className="hidden sm:block" />
-              <span className="text-[#EEF2F6]">OF WORK</span>
+        {/* Main Poster Layout: Typography Left, Integrated Data & Artwork */}
+        <div className="my-auto py-8 sm:py-12 max-w-2xl space-y-6">
+          {/* Main Title & Editorial Thesis */}
+          <div className="space-y-4">
+            <h1
+              className="text-5xl sm:text-7xl lg:text-8xl font-display font-extrabold tracking-tight leading-[0.92] select-none uppercase"
+              style={{ color: isDark ? '#f7faeb' : '#061329' }}
+            >
+              THE NEW VALUE <br />
+              <span>OF WORK</span>
             </h1>
-            <p className="text-xl sm:text-2xl lg:text-3xl font-serif text-[#94A3B8] font-normal leading-relaxed max-w-2xl">
-              AI is changing work. <span className="text-[#EEF2F6]">But not every job in the same way.</span>
+
+            <p
+              className="text-lg sm:text-xl lg:text-2xl font-sans font-normal leading-relaxed max-w-xl"
+              style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+            >
+              AI is changing work.{' '}
+              <span
+                className="font-semibold"
+                style={{ color: isDark ? '#f7faeb' : '#061329' }}
+              >
+                But not every job in the same way.
+              </span>
             </p>
           </div>
 
-          {/* Integrated Interactive Question & Profession Comparison */}
-          <div className="pt-6 space-y-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 max-w-3xl">
+          {/* Integrated Interactive Curiosity Question */}
+          <div
+            className="pt-6 space-y-5 border-t"
+            style={{ borderColor: isDark ? '#142e53' : '#e2e6db' }}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="space-y-0.5">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#22D3EE] font-semibold block">
+                <span
+                  className="text-xs font-mono uppercase tracking-widest font-semibold block"
+                  style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+                >
                   Interactive Curiosity Test
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#EEF2F6]">
+                <h2
+                  className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight"
+                  style={{ color: isDark ? '#f7faeb' : '#061329' }}
+                >
                   Which job do you think AI affects more?
                 </h2>
               </div>
 
               <button
+                type="button"
                 onClick={handleCyclePair}
-                className="px-3 py-1.5 rounded-lg bg-[#161C25]/90 hover:bg-[#1E2633] border border-[#222B38] text-xs font-mono text-[#94A3B8] hover:text-[#EEF2F6] transition-colors flex items-center gap-1.5 cursor-pointer backdrop-blur-md shadow-xs"
+                className="px-3 py-1.5 rounded-full border text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer backdrop-blur-md"
+                style={{
+                  backgroundColor: isDark ? 'rgba(11, 31, 60, 0.8)' : 'rgba(255, 255, 255, 0.9)',
+                  borderColor: isDark ? '#163560' : '#d8dcce',
+                  color: isDark ? '#9bb2cf' : '#526a85'
+                }}
+                data-cursor-interactive="true"
               >
                 <Shuffle className="w-3.5 h-3.5" />
                 <span>Try another pair ({selectedPairIndex + 1}/{CURIOSITY_PAIRS.length})</span>
               </button>
             </div>
 
-            {/* Asymmetrical Profession Choice Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl">
+            {/* Architectural Profession Choice Cards (Reduced box feeling, sleek geometry) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
               {/* Option A */}
               <button
+                type="button"
                 onClick={() => handleChoose('A')}
-                className={`p-5 rounded-2xl text-left border transition-all cursor-pointer relative overflow-hidden backdrop-blur-md group ${
-                  chosenSide === 'A'
-                    ? 'bg-[#161C25]/95 border-[#22D3EE] ring-2 ring-[#22D3EE]/30 shadow-2xl'
-                    : chosenSide === 'B'
-                    ? 'bg-[#121720]/60 border-[#1E2633] opacity-65'
-                    : 'bg-[#121720]/80 hover:bg-[#161C25] border-[#222B38] hover:border-[#22D3EE]/60'
-                }`}
+                className="p-5 rounded-2xl text-left border transition-all cursor-pointer relative overflow-hidden backdrop-blur-md group"
+                style={{
+                  backgroundColor:
+                    chosenSide === 'A'
+                      ? isDark
+                        ? '#0b1f3c'
+                        : '#ffffff'
+                      : chosenSide === 'B'
+                      ? isDark
+                        ? 'rgba(7, 23, 49, 0.5)'
+                        : 'rgba(241, 239, 230, 0.5)'
+                      : isDark
+                      ? 'rgba(11, 31, 60, 0.65)'
+                      : 'rgba(255, 255, 255, 0.75)',
+                  borderColor:
+                    chosenSide === 'A'
+                      ? isDark
+                        ? '#d7e63b'
+                        : '#1e5bb4'
+                      : isDark
+                      ? '#163560'
+                      : '#d8dcce',
+                  boxShadow:
+                    chosenSide === 'A'
+                      ? isDark
+                        ? '0 0 20px rgba(215, 230, 59, 0.15)'
+                        : '0 4px 20px rgba(30, 91, 180, 0.12)'
+                      : 'none'
+                }}
+                data-cursor-interactive="true"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs font-mono text-[#94A3B8]">
-                    <span>{pair.jobA.category}</span>
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span style={{ color: isDark ? '#9bb2cf' : '#526a85' }}>
+                      {pair.jobA.category}
+                    </span>
                     {chosenSide === 'A' && (
-                      <span className="flex items-center gap-1 text-[#22D3EE] font-bold">
+                      <span
+                        className="flex items-center gap-1 font-bold text-xs"
+                        style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+                      >
                         <Check className="w-3.5 h-3.5" /> Your choice
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
+                  <h3
+                    className="text-xl sm:text-2xl font-display font-extrabold tracking-tight transition-colors"
+                    style={{ color: isDark ? '#f7faeb' : '#061329' }}
+                  >
                     {pair.jobA.title}
                   </h3>
 
-                  <p className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2">
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+                  >
                     Focus: {pair.jobA.aiTouches}
                   </p>
 
-                  {/* Revealed Data on Click */}
+                  {/* Revealed Empirical Data on Choice */}
                   {chosenSide && (
-                    <div className="pt-3 border-t border-[#222B38] space-y-2.5 animate-in fade-in duration-300">
+                    <div
+                      className="pt-3 border-t space-y-2.5 animate-in fade-in duration-300"
+                      style={{ borderColor: isDark ? '#163560' : '#d8dcce' }}
+                    >
                       <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                        <div className="p-2.5 bg-[#0C1016]/90 rounded-xl border border-[#222B38]">
-                          <span className="text-[10px] text-[#94A3B8] block">AI affects:</span>
-                          <span className="text-lg font-bold text-[#22D3EE]">
+                        <div
+                          className="p-2.5 rounded-xl border"
+                          style={{
+                            backgroundColor: isDark ? '#071731' : '#f1efe6',
+                            borderColor: isDark ? '#142e53' : '#cbd0c1'
+                          }}
+                        >
+                          <span
+                            className="text-[10px] block"
+                            style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+                          >
+                            AI Task Overlap:
+                          </span>
+                          <span
+                            className="text-lg font-bold"
+                            style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+                          >
                             {(pair.jobA.exposure * 100).toFixed(0)}%
                           </span>
-                          <span className="text-[9px] text-[#94A3B8] block">of daily tasks</span>
+                          <span
+                            className="text-[9px] block"
+                            style={{ color: isDark ? '#5f7d9f' : '#6c829c' }}
+                          >
+                            of workday tasks
+                          </span>
                         </div>
-                        <div className="p-2.5 bg-[#0C1016]/90 rounded-xl border border-[#222B38]">
-                          <span className="text-[10px] text-[#94A3B8] block">Expected growth:</span>
+
+                        <div
+                          className="p-2.5 rounded-xl border"
+                          style={{
+                            backgroundColor: isDark ? '#071731' : '#f1efe6',
+                            borderColor: isDark ? '#142e53' : '#cbd0c1'
+                          }}
+                        >
+                          <span
+                            className="text-[10px] block"
+                            style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+                          >
+                            10-Yr Job Growth:
+                          </span>
                           <span
                             className={`text-lg font-bold ${
-                              pair.jobA.growth >= 0 ? 'text-[#10B981]' : 'text-[#F43F5E]'
+                              pair.jobA.growth >= 0 ? 'text-[#10b981]' : 'text-[#f43f5e]'
                             }`}
                           >
                             {pair.jobA.growth > 0 ? '+' : ''}
                             {pair.jobA.growth}%
                           </span>
-                          <span className="text-[9px] text-[#94A3B8] block">U.S. 2024–34</span>
+                          <span
+                            className="text-[9px] block"
+                            style={{ color: isDark ? '#5f7d9f' : '#6c829c' }}
+                          >
+                            BLS 2024–34
+                          </span>
                         </div>
                       </div>
-                      <div className="text-[11px] text-[#94A3B8]">
-                        <strong className="text-[#EEF2F6] block font-sans">Human core:</strong>
-                        <span>{pair.jobA.humanValue}</span>
+
+                      <div className="text-[11px]">
+                        <strong
+                          className="block font-sans"
+                          style={{ color: isDark ? '#f7faeb' : '#061329' }}
+                        >
+                          Human core:
+                        </strong>
+                        <span style={{ color: isDark ? '#9bb2cf' : '#526a85' }}>
+                          {pair.jobA.humanValue}
+                        </span>
                       </div>
                     </div>
                   )}
@@ -411,60 +443,142 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
 
               {/* Option B */}
               <button
+                type="button"
                 onClick={() => handleChoose('B')}
-                className={`p-5 rounded-2xl text-left border transition-all cursor-pointer relative overflow-hidden backdrop-blur-md group ${
-                  chosenSide === 'B'
-                    ? 'bg-[#161C25]/95 border-[#22D3EE] ring-2 ring-[#22D3EE]/30 shadow-2xl'
-                    : chosenSide === 'A'
-                    ? 'bg-[#121720]/60 border-[#1E2633] opacity-65'
-                    : 'bg-[#121720]/80 hover:bg-[#161C25] border-[#222B38] hover:border-[#22D3EE]/60'
-                }`}
+                className="p-5 rounded-2xl text-left border transition-all cursor-pointer relative overflow-hidden backdrop-blur-md group"
+                style={{
+                  backgroundColor:
+                    chosenSide === 'B'
+                      ? isDark
+                        ? '#0b1f3c'
+                        : '#ffffff'
+                      : chosenSide === 'A'
+                      ? isDark
+                        ? 'rgba(7, 23, 49, 0.5)'
+                        : 'rgba(241, 239, 230, 0.5)'
+                      : isDark
+                      ? 'rgba(11, 31, 60, 0.65)'
+                      : 'rgba(255, 255, 255, 0.75)',
+                  borderColor:
+                    chosenSide === 'B'
+                      ? isDark
+                        ? '#d7e63b'
+                        : '#1e5bb4'
+                      : isDark
+                      ? '#163560'
+                      : '#d8dcce',
+                  boxShadow:
+                    chosenSide === 'B'
+                      ? isDark
+                        ? '0 0 20px rgba(215, 230, 59, 0.15)'
+                        : '0 4px 20px rgba(30, 91, 180, 0.12)'
+                      : 'none'
+                }}
+                data-cursor-interactive="true"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs font-mono text-[#94A3B8]">
-                    <span>{pair.jobB.category}</span>
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span style={{ color: isDark ? '#9bb2cf' : '#526a85' }}>
+                      {pair.jobB.category}
+                    </span>
                     {chosenSide === 'B' && (
-                      <span className="flex items-center gap-1 text-[#22D3EE] font-bold">
+                      <span
+                        className="flex items-center gap-1 font-bold text-xs"
+                        style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+                      >
                         <Check className="w-3.5 h-3.5" /> Your choice
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#EEF2F6] group-hover:text-[#22D3EE] transition-colors">
+                  <h3
+                    className="text-xl sm:text-2xl font-display font-extrabold tracking-tight transition-colors"
+                    style={{ color: isDark ? '#f7faeb' : '#061329' }}
+                  >
                     {pair.jobB.title}
                   </h3>
 
-                  <p className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2">
+                  <p
+                    className="text-xs leading-relaxed"
+                    style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+                  >
                     Focus: {pair.jobB.aiTouches}
                   </p>
 
-                  {/* Revealed Data on Click */}
+                  {/* Revealed Empirical Data on Choice */}
                   {chosenSide && (
-                    <div className="pt-3 border-t border-[#222B38] space-y-2.5 animate-in fade-in duration-300">
+                    <div
+                      className="pt-3 border-t space-y-2.5 animate-in fade-in duration-300"
+                      style={{ borderColor: isDark ? '#163560' : '#d8dcce' }}
+                    >
                       <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                        <div className="p-2.5 bg-[#0C1016]/90 rounded-xl border border-[#222B38]">
-                          <span className="text-[10px] text-[#94A3B8] block">AI affects:</span>
-                          <span className="text-lg font-bold text-[#22D3EE]">
+                        <div
+                          className="p-2.5 rounded-xl border"
+                          style={{
+                            backgroundColor: isDark ? '#071731' : '#f1efe6',
+                            borderColor: isDark ? '#142e53' : '#cbd0c1'
+                          }}
+                        >
+                          <span
+                            className="text-[10px] block"
+                            style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+                          >
+                            AI Task Overlap:
+                          </span>
+                          <span
+                            className="text-lg font-bold"
+                            style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+                          >
                             {(pair.jobB.exposure * 100).toFixed(0)}%
                           </span>
-                          <span className="text-[9px] text-[#94A3B8] block">of daily tasks</span>
+                          <span
+                            className="text-[9px] block"
+                            style={{ color: isDark ? '#5f7d9f' : '#6c829c' }}
+                          >
+                            of workday tasks
+                          </span>
                         </div>
-                        <div className="p-2.5 bg-[#0C1016]/90 rounded-xl border border-[#222B38]">
-                          <span className="text-[10px] text-[#94A3B8] block">Expected growth:</span>
+
+                        <div
+                          className="p-2.5 rounded-xl border"
+                          style={{
+                            backgroundColor: isDark ? '#071731' : '#f1efe6',
+                            borderColor: isDark ? '#142e53' : '#cbd0c1'
+                          }}
+                        >
+                          <span
+                            className="text-[10px] block"
+                            style={{ color: isDark ? '#9bb2cf' : '#526a85' }}
+                          >
+                            10-Yr Job Growth:
+                          </span>
                           <span
                             className={`text-lg font-bold ${
-                              pair.jobB.growth >= 0 ? 'text-[#10B981]' : 'text-[#F43F5E]'
+                              pair.jobB.growth >= 0 ? 'text-[#10b981]' : 'text-[#f43f5e]'
                             }`}
                           >
                             {pair.jobB.growth > 0 ? '+' : ''}
                             {pair.jobB.growth}%
                           </span>
-                          <span className="text-[9px] text-[#94A3B8] block">U.S. 2024–34</span>
+                          <span
+                            className="text-[9px] block"
+                            style={{ color: isDark ? '#5f7d9f' : '#6c829c' }}
+                          >
+                            BLS 2024–34
+                          </span>
                         </div>
                       </div>
-                      <div className="text-[11px] text-[#94A3B8]">
-                        <strong className="text-[#EEF2F6] block font-sans">Human core:</strong>
-                        <span>{pair.jobB.humanValue}</span>
+
+                      <div className="text-[11px]">
+                        <strong
+                          className="block font-sans"
+                          style={{ color: isDark ? '#f7faeb' : '#061329' }}
+                        >
+                          Human core:
+                        </strong>
+                        <span style={{ color: isDark ? '#9bb2cf' : '#526a85' }}>
+                          {pair.jobB.humanValue}
+                        </span>
                       </div>
                     </div>
                   )}
@@ -472,16 +586,32 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
               </button>
             </div>
 
-            {/* Revealed Editorial Insight Box */}
+            {/* Revealed Editorial Data Insight */}
             {chosenSide && (
-              <div className="p-5 rounded-2xl bg-[#161C25]/95 border border-[#22D3EE]/35 space-y-2 max-w-3xl backdrop-blur-md animate-in fade-in duration-300">
+              <div
+                className="p-5 rounded-2xl border space-y-2 backdrop-blur-md animate-in fade-in duration-300"
+                style={{
+                  backgroundColor: isDark ? '#0b1f3c' : '#ffffff',
+                  borderColor: isDark ? '#d7e63b' : '#1e5bb4'
+                }}
+              >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase tracking-wider text-[#22D3EE] font-bold">
-                    {pair.curiosityPrompt} · The Data Finding
+                  <span
+                    className="text-xs font-mono uppercase tracking-wider font-bold"
+                    style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+                  >
+                    {pair.curiosityPrompt} · Key Insight
                   </span>
-                  <EvidenceBadge id={pair.evidenceId} onClick={onOpenEvidence} labelOverride="View Empirical Data" />
+                  <EvidenceBadge
+                    id={pair.evidenceId}
+                    onClick={onOpenEvidence}
+                    labelOverride="Inspect Dataset"
+                  />
                 </div>
-                <p className="text-sm text-[#EEF2F6] leading-relaxed">
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: isDark ? '#f7faeb' : '#061329' }}
+                >
                   {pair.editorialInsight}
                 </p>
               </div>
@@ -489,22 +619,37 @@ export const EditorialLandingHero: React.FC<EditorialLandingHeroProps> = ({
           </div>
         </div>
 
-        {/* Bottom Poster Anchor Bar */}
-        <div className="pt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[#1E2633]/60 text-xs text-[#94A3B8]">
+        {/* Bottom Editorial Anchor Bar */}
+        <div
+          className="pt-6 flex flex-wrap items-center justify-between gap-4 border-t text-xs"
+          style={{
+            borderColor: isDark ? '#142e53' : '#d8dcce',
+            color: isDark ? '#9bb2cf' : '#526a85'
+          }}
+        >
           <div className="flex items-center gap-3 font-mono text-[11px]">
-            <span className="inline-flex items-center gap-1.5 text-[#EEF2F6]">
-              <span className="w-2 h-2 rounded-full bg-[#22D3EE] animate-pulse" />
-              <span>Living Atlas</span>
+            <span
+              className="inline-flex items-center gap-1.5 font-semibold"
+              style={{ color: isDark ? '#f7faeb' : '#061329' }}
+            >
+              <span
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ backgroundColor: isDark ? '#d7e63b' : '#1e5bb4' }}
+              />
+              <span>The 271 Jobs Living Atlas</span>
             </span>
-            <span className="text-[#222B38]">|</span>
-            <span>271 Occupations · Median AI Exposure: 37% · Growth Baseline: +3.1%</span>
+            <span style={{ color: isDark ? '#163560' : '#cbd0c1' }}>|</span>
+            <span>Hover or click any node on the orrery artwork to inspect professions</span>
           </div>
 
           <button
+            type="button"
             onClick={onScrollToChapter1}
-            className="group font-mono text-xs text-[#22D3EE] hover:text-[#38BDF8] font-semibold flex items-center gap-2 cursor-pointer transition-colors"
+            className="group font-mono text-xs font-semibold flex items-center gap-2 cursor-pointer transition-colors"
+            style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}
+            data-cursor-interactive="true"
           >
-            <span>Explore the 271 Jobs Living Atlas</span>
+            <span>Explore Chapter 1: Four Different Futures</span>
             <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
           </button>
         </div>

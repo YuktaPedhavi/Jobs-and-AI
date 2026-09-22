@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { occupations271, Occupation271 } from '../data/occupations271';
-import { Sparkles, ArrowRight, Layers, BarChart2, Compass, Eye } from 'lucide-react';
+import { Sparkles, Layers, BarChart2, Compass } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 export type ConstellationViewMode = 'constellation' | 'categories' | 'scatterplot' | 'skills';
 
@@ -32,6 +33,8 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
   className = '',
   height = 420
 }) => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [viewMode, setViewMode] = useState<ConstellationViewMode>(initialMode);
@@ -203,7 +206,7 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
         const maxGrowth = 35;
         const zeroY = padding.top + innerH - ((0 - minGrowth) / (maxGrowth - minGrowth)) * innerH;
 
-        ctx.strokeStyle = '#1E293B';
+        ctx.strokeStyle = isDark ? '#163560' : '#cbd4df';
         ctx.lineWidth = 1;
         ctx.setLineDash([4, 4]);
 
@@ -215,14 +218,14 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
           ctx.lineTo(dimensions.width - padding.right, y);
           ctx.stroke();
 
-          ctx.fillStyle = '#64748B';
+          ctx.fillStyle = isDark ? '#5f7d9f' : '#64748b';
           ctx.font = '10px monospace';
           ctx.textAlign = 'right';
           ctx.fillText(`${g > 0 ? '+' : ''}${g}%`, padding.left - 8, y + 3);
         });
 
         // Zero axis emphasis
-        ctx.strokeStyle = '#334155';
+        ctx.strokeStyle = isDark ? '#1e5bb4' : '#1e5bb4';
         ctx.lineWidth = 1.5;
         ctx.setLineDash([]);
         ctx.beginPath();
@@ -233,20 +236,20 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
         // X Axis ticks
         [0.2, 0.4, 0.6, 0.8].forEach((exp) => {
           const x = padding.left + ((exp - 0.05) / (0.88 - 0.05)) * innerW;
-          ctx.strokeStyle = '#1E293B';
+          ctx.strokeStyle = isDark ? '#163560' : '#cbd4df';
           ctx.beginPath();
           ctx.moveTo(x, padding.top);
           ctx.lineTo(x, dimensions.height - padding.bottom);
           ctx.stroke();
 
-          ctx.fillStyle = '#64748B';
+          ctx.fillStyle = isDark ? '#5f7d9f' : '#64748b';
           ctx.font = '10px monospace';
           ctx.textAlign = 'center';
           ctx.fillText(`${(exp * 100).toFixed(0)}%`, x, dimensions.height - padding.bottom + 16);
         });
 
         // Axis labels
-        ctx.fillStyle = '#94A3B8';
+        ctx.fillStyle = isDark ? '#9bb2cf' : '#475e77';
         ctx.font = '11px sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('How much of this job’s work AI could affect (Task Exposure Index)', dimensions.width / 2, dimensions.height - 12);
@@ -272,13 +275,13 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
         ctx.arc(node.x, node.y, r, 0, Math.PI * 2);
 
         if (isSelected) {
-          ctx.fillStyle = '#22D3EE';
-          ctx.shadowColor = '#22D3EE';
-          ctx.shadowBlur = 12;
+          ctx.fillStyle = isDark ? '#d7e63b' : '#1e5bb4';
+          ctx.shadowColor = isDark ? '#d7e63b' : '#1e5bb4';
+          ctx.shadowBlur = 10;
         } else if (isHovered) {
-          ctx.fillStyle = '#FFFFFF';
-          ctx.shadowColor = '#06B6D4';
-          ctx.shadowBlur = 8;
+          ctx.fillStyle = isDark ? '#ffffff' : '#061329';
+          ctx.shadowColor = '#06b6d4';
+          ctx.shadowBlur = 6;
         } else {
           ctx.fillStyle = node.color;
           ctx.shadowBlur = 0;
@@ -288,7 +291,7 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
 
         // Stroke ring
         if (isSelected || isHovered) {
-          ctx.strokeStyle = '#FFFFFF';
+          ctx.strokeStyle = isDark ? '#ffffff' : '#061329';
           ctx.lineWidth = 1.5;
           ctx.stroke();
         }
@@ -302,7 +305,7 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
 
     render();
     return () => cancelAnimationFrame(animId);
-  }, [dimensions, viewMode, activeOccupation, hoveredNode]);
+  }, [dimensions, viewMode, activeOccupation, hoveredNode, isDark]);
 
   // Handle canvas mouse move for interactive inspection
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -432,7 +435,7 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
               <span className="uppercase">{hoveredNode.occ.job_category}</span>
               <span className="text-[#22D3EE]">SOC {hoveredNode.occ.soc_code}</span>
             </div>
-            <div className="font-serif font-bold text-sm text-[#EEF2F6]">
+            <div className="font-display font-extrabold text-sm tracking-tight text-[#EEF2F6]">
               {hoveredNode.occ.occupation_title}
             </div>
             <div className="grid grid-cols-2 gap-2 pt-1 border-t border-[#222B38] font-mono text-[11px]">
