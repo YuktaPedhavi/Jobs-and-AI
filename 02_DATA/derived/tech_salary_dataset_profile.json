@@ -1,0 +1,14 @@
+{
+  "rows": 71913,
+  "years": [
+    2020,
+    2025
+  ],
+  "median_salary_usd": 138750.0,
+  "mean_salary_usd": 151161.2526246993,
+  "us_employee_residence_share_pct": 83.55234797602658,
+  "india_employee_residence_rows": 229,
+  "india_employee_residence_share_pct": 0.318440337630192,
+  "share_2024_2025_pct": 91.73862862069446,
+  "warning": "Use only as a secondary AI/data/tech salary dataset. It is heavily US- and 2024\u201325-weighted and is not representative of all professions or India."
+}

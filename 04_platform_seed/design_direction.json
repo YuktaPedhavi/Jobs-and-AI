@@ -1,0 +1,47 @@
+{
+  "experience_type": "Editorial scrollytelling + explorable data, not a dashboard and not a conventional report website.",
+  "tone": [
+    "analytical",
+    "human-centred",
+    "contemporary",
+    "curious",
+    "evidence-led",
+    "slightly provocative but never alarmist"
+  ],
+  "avoid": [
+    "robots taking office chairs",
+    "glowing AI brains",
+    "generic circuit-board cyberpunk",
+    "fearmongering red-alert aesthetics",
+    "decorative charts with no narrative purpose",
+    "fake precision",
+    "causal language unsupported by evidence"
+  ],
+  "visual_metaphors": [
+    "job as a bundle of tasks",
+    "career ladder / missing first rung",
+    "value flow from productivity to wages/company/customer",
+    "skill stack",
+    "evidence layers"
+  ],
+  "layout": [
+    "strong editorial typography",
+    "generous negative space",
+    "full-viewport chapter openings",
+    "sticky chart panels for scrollytelling",
+    "source drawer available throughout",
+    "mobile-first fallbacks for sticky interactions"
+  ],
+  "colour_direction": "Use a restrained neutral base with one AI/system accent, one human/expertise accent and one caution accent. Google AI Studio has freedom to choose accessible exact colours; maintain semantic consistency across the whole experience.",
+  "type_direction": "Use an expressive display face for chapter statements paired with a highly legible body/UI face. Coder may choose suitable Google Fonts; prioritize readability and data labels over novelty.",
+  "motion": "Motion should explain change: task decomposition, ladder transformation, value flow and progressive reveal. Respect prefers-reduced-motion. Avoid gratuitous parallax/3D.",
+  "accessibility": [
+    "WCAG-aware contrast",
+    "keyboard accessible interactions",
+    "text alternatives for charts",
+    "visible focus states",
+    "never encode meaning using colour alone",
+    "responsive touch targets"
+  ],
+  "creative_freedom": "The coder may reinterpret composition, typography, motion and micro-interactions, but may not change claim values, claim semantics, source relationships, caveats, or the six-chapter narrative logic without explicit approval."
+}

@@ -1,0 +1,134 @@
+[
+  {
+    "source_id": "S01",
+    "organization": "International Labour Organization (ILO)",
+    "title": "Generative AI and Jobs: A Refined Global Index of Occupational Exposure",
+    "date": "2025-05-20",
+    "type": "Working paper / task-level occupational exposure",
+    "geography": "Global",
+    "url": "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure",
+    "method_note": "Task-level methodology drawing on 29,753 tasks in the Polish occupational classification, human survey/expert input and AI predictions, mapped to international occupations.",
+    "use": "Global exposure, exposure gradients, transformation-vs-replacement framing."
+  },
+  {
+    "source_id": "S02",
+    "organization": "NBER / Quarterly Journal of Economics",
+    "title": "Generative AI at Work",
+    "date": "2023-04 (working paper; published 2025)",
+    "type": "Field study",
+    "geography": "Company-level customer support setting",
+    "url": "https://www.nber.org/papers/w31161",
+    "method_note": "Staggered introduction of an AI conversational assistant to 5,179 customer-support agents.",
+    "use": "Productivity heterogeneity by worker experience."
+  },
+  {
+    "source_id": "S03",
+    "organization": "NBER",
+    "title": "Still Waters, Rapid Currents: Early Labor Market Transformation under Generative AI",
+    "date": "2025-05; revised 2026-03",
+    "type": "Administrative records + adoption surveys",
+    "geography": "Denmark",
+    "url": "https://www.nber.org/papers/w33777",
+    "method_note": "Links large-scale chatbot-adoption surveys to administrative labour-market records; difference-in-differences.",
+    "use": "Task reorganisation; earnings/hours null effects within two years."
+  },
+  {
+    "source_id": "S04",
+    "organization": "PwC",
+    "title": "2026 Global AI Jobs Barometer",
+    "date": "2026-06-15",
+    "type": "Job advertisement / company analysis",
+    "geography": "Six continents",
+    "url": "https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html",
+    "method_note": "Analysis of more than one billion job ads plus company-level productivity/headcount analysis.",
+    "use": "AI-skill wage premium, junior-role seniorisation, professionalised vs democratised roles."
+  },
+  {
+    "source_id": "S05",
+    "organization": "Stanford Digital Economy Lab",
+    "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+    "date": "2026-08-12 revision",
+    "type": "Administrative payroll analysis",
+    "geography": "United States",
+    "url": "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
+    "method_note": "ADP high-frequency administrative payroll data covering millions of US workers through June 2026.",
+    "use": "Young-worker employment patterns by AI exposure; no economy-wide displacement finding."
+  },
+  {
+    "source_id": "S06",
+    "organization": "OECD",
+    "title": "Young people, labour markets and AI: What OECD evidence shows",
+    "date": "2026-08-15",
+    "type": "Evidence synthesis / Employment Outlook context",
+    "geography": "OECD countries",
+    "url": "https://www.oecd.org/en/blogs/2026/08/young-people-labour-markets-and-ai-what-oecd-evidence-shows.html",
+    "method_note": "OECD interpretation of youth labour-market evidence and AI-related evidence.",
+    "use": "Caveat against attributing the broad youth-employment slowdown to AI."
+  },
+  {
+    "source_id": "S07",
+    "organization": "World Economic Forum",
+    "title": "Future of Jobs Report 2025",
+    "date": "2025-01",
+    "type": "Employer survey",
+    "geography": "55 economies",
+    "url": "https://www.weforum.org/publications/the-future-of-jobs-report-2025/digest/",
+    "method_note": "Survey of more than 1,000 employers representing over 14 million workers.",
+    "use": "Skills change, training needs, employer-reported barriers and responses."
+  },
+  {
+    "source_id": "S08",
+    "organization": "International Monetary Fund",
+    "title": "India: 2024 Article IV Consultation — Annex XIV: The Impacts of AI on India's Economy",
+    "date": "2025",
+    "type": "Country macro/labour assessment",
+    "geography": "India",
+    "url": "https://www.elibrary.imf.org/abstract/journals/002/2025/054/article-A001-en.xml",
+    "method_note": "India country assessment applying IMF AI-exposure framework and labour-force structure.",
+    "use": "India exposure/complementarity/displacement-risk split."
+  },
+  {
+    "source_id": "S09",
+    "organization": "NASSCOM",
+    "title": "Advancing India’s AI Skills: Interventions and Programmes Needed",
+    "date": "2024-08-19",
+    "type": "Industry skills research",
+    "geography": "India",
+    "url": "https://community.nasscom.in/index.php/communities/data-science-ai-community/advancing-indias-ai-skills-interventions-and-programmes?page=1",
+    "method_note": "Industry-focused skills/talent outlook; not representative of the entire Indian workforce.",
+    "use": "AI talent pool and AI-market growth estimates."
+  },
+  {
+    "source_id": "S10",
+    "organization": "NASSCOM",
+    "title": "WORK REIMAGINED: The Rise of Human–AI Collaboration",
+    "date": "2026-01-13",
+    "type": "Industry research",
+    "geography": "Indian technology industry",
+    "url": "https://community.nasscom.in/communities/nasscom-insights/work-reimagined-rise-human-ai-collaboration",
+    "method_note": "Indian technology-industry evidence; do not generalise to all Indian workers.",
+    "use": "Human–AI collaboration and reported share of work using AI."
+  },
+  {
+    "source_id": "S11",
+    "organization": "International Labour Organization (ILO)",
+    "title": "Generative AI at work: What it means for jobs in Europe and beyond",
+    "date": "2025",
+    "type": "Nationally representative worker survey + focus groups",
+    "geography": "Poland, with broader interpretation",
+    "url": "https://www.ilo.org/resource/article/generative-ai-work-what-it-means-jobs-europe-and-beyond",
+    "method_note": "Focus groups with workers/managers plus nationally representative workplace adoption survey.",
+    "use": "Qualitative themes: verification, skill erosion concerns, consultation, governance gaps."
+  },
+  {
+    "source_id": "S12",
+    "organization": "International Labour Organization (ILO)",
+    "title": "The impact of GenAI on jobs, productivity and work organization: a review of the empirical evidence",
+    "date": "2026-06-01",
+    "type": "Empirical evidence review",
+    "geography": "Multi-country",
+    "url": "https://www.ilo.org/publications/impact-genai-jobs-productivity-and-work-organization-review-empirical",
+    "method_note": "Review of experiments, firm data, platform studies and representative surveys.",
+    "use": "Synthesis: productivity gains uneven; large-scale displacement limited; job-quality and young-worker risks."
+  }
+]

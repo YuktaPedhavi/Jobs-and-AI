@@ -1,0 +1,107 @@
+[
+  {
+    "viz_id": "V01",
+    "chapter": "01_fear",
+    "title": "Exposure is not replacement",
+    "data": [
+      "C001",
+      "C002",
+      "C003"
+    ],
+    "preferred_form": "nested bars + large-number annotation",
+    "interaction": "income-group toggle",
+    "must_show": "Potential exposure, not actual displacement."
+  },
+  {
+    "viz_id": "V02",
+    "chapter": "02_boost",
+    "title": "AI productivity gains differ by experience",
+    "data": [
+      "C004",
+      "C005"
+    ],
+    "preferred_form": "two-bar comparison",
+    "interaction": "toggle average / novice",
+    "must_show": "5,179 customer-support agents; specific setting."
+  },
+  {
+    "viz_id": "V03",
+    "chapter": "03_value_gap",
+    "title": "Experience salary ladder",
+    "data_file": "02_data/derived/salary_by_experience.csv",
+    "preferred_form": "bar or stepped ladder",
+    "interaction": "hover/tap for N and IQR",
+    "must_show": "Dataset sample caveat."
+  },
+  {
+    "viz_id": "V04",
+    "chapter": "03_value_gap",
+    "title": "Salary Explorer",
+    "data_files": [
+      "02_data/derived/salary_by_role_archetype.csv",
+      "02_data/derived/us_2024_25_role_experience_salary.csv"
+    ],
+    "preferred_form": "interactive grouped bars/range marks",
+    "interaction": "role + experience filters",
+    "must_show": "Median + sample N; US 2024–25 lens when using the role×experience matrix."
+  },
+  {
+    "viz_id": "V05",
+    "chapter": "04_first_rung",
+    "title": "Who occupies each experience rung?",
+    "data_file": "02_data/derived/role_experience_composition.csv",
+    "preferred_form": "100% stacked horizontal bars",
+    "interaction": "highlight AI/ML vs adjacent roles",
+    "must_show": "Classification methodology link."
+  },
+  {
+    "viz_id": "V06",
+    "chapter": "04_first_rung",
+    "title": "The early-career warning signal",
+    "data": [
+      "C009",
+      "C010",
+      "C011"
+    ],
+    "preferred_form": "separate evidence cards, not one shared quantitative axis",
+    "interaction": "mandatory caveat reveal",
+    "must_show": "Stanford and OECD findings are related but not equivalent."
+  },
+  {
+    "viz_id": "V07",
+    "chapter": "05_new_advantage",
+    "title": "59 of 100 workers need training",
+    "data": [
+      "C012",
+      "C013",
+      "C014"
+    ],
+    "preferred_form": "unit grid + evidence cards",
+    "interaction": "skills evidence reveal",
+    "must_show": "WEF employer projections cover multiple macrotrends."
+  },
+  {
+    "viz_id": "V08",
+    "chapter": "06_who_gets_value",
+    "title": "India's 26% high-exposure split",
+    "data": [
+      "C015"
+    ],
+    "preferred_form": "stacked bar: 14 complementarity + 12 higher displacement risk",
+    "interaction": "definitions tooltip",
+    "must_show": "Exposure/risk ≠ forecast of jobs lost."
+  },
+  {
+    "viz_id": "V09",
+    "chapter": "06_who_gets_value",
+    "title": "India talent opportunity",
+    "data": [
+      "C016",
+      "C017",
+      "C018"
+    ],
+    "preferred_form": "projection / range cards",
+    "interaction": "source + industry-scope reveal",
+    "must_show": "NASSCOM evidence is industry-focused."
+  }
+]

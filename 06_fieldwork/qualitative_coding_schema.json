@@ -1,0 +1,34 @@
+{
+  "fields": [
+    "interview_id",
+    "participant_group",
+    "years_experience",
+    "sector",
+    "ai_use_frequency",
+    "task_change",
+    "theme_codes",
+    "quote_approved",
+    "quote_text",
+    "researcher_memo",
+    "chapter_links"
+  ],
+  "theme_codes": [
+    "TASK_SUBSTITUTION",
+    "AUGMENTATION",
+    "VERIFICATION",
+    "JUDGEMENT",
+    "TACIT_KNOWLEDGE",
+    "LEARNING_BY_DOING",
+    "JUNIOR_ROLE_CHANGE",
+    "WORKLOAD_INTENSIFICATION",
+    "PRODUCTIVITY_CAPTURE",
+    "WAGE_REWARD",
+    "HIRING_CRITERIA",
+    "SKILL_EROSION",
+    "SKILL_ACQUISITION",
+    "TRUST",
+    "GOVERNANCE",
+    "ACCESS"
+  ],
+  "rule": "Only include quote_text in the public platform if quote_approved is true."
+}

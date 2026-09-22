@@ -1,0 +1,9 @@
+finding,value,unit,scope,interpretation
+Exposure vs projected job growth,-0.09403020981273266,Pearson r,271 occupations,Very weak linear relationship; exposure is not a job-decline score.
+Exposure vs verbal ability,0.7110944246286284,Pearson r,271 occupations,Language-heavy work is more reachable by current LLM-style exposure measures.
+Exposure vs spatial ability,-0.3942190900376196,Pearson r,271 occupations,Spatial work is less exposed in this dataset; do not call it AI-proof.
+Exposure vs median wage,0.2858671510225866,Pearson r,271 occupations,Exposure reaches many professional and higher-wage occupations.
+Human vs GPT-4 exposure estimates,0.8347705238754213,Pearson r,271 occupations,Exposure measures broadly agree but differ for some occupations.
+High-exposure occupations with positive growth,80.0,%,90 high-exposure occupations,Positive growth does not mean AI caused growth.
+High-exposure occupations above 3.1% BLS baseline,52.2,%,90 high-exposure occupations,Uses 3.1% U.S. BLS all-occupation 2024–34 baseline.
+High-exposure occupations projected to decline,14.4,%,90 high-exposure occupations,Decline can have many causes; do not attribute it to AI alone.

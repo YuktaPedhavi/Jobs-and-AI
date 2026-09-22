@@ -1,0 +1,38 @@
+{
+  "occupation_exposure_dataset": {
+    "rows": 271,
+    "columns": 23,
+    "missing_cells": 0,
+    "duplicate_rows": 0,
+    "duplicate_soc_codes": 0,
+    "employment_2024_sum": 81559900.0,
+    "coverage_warning": "271 occupations only; this is not the complete U.S. occupational universe. Employment sum is about 81.6 million within this file.",
+    "provenance_warning": "This is a user-supplied compiled file. Wage/growth/employment fields align with BLS-style occupational data and cognitive fields align with O*NET concepts; exposure fields correspond to published exposure frameworks, but the exact merge/construction of this compiled file was not independently audited."
+  },
+  "salary_dataset": {
+    "rows": 71913,
+    "years": [
+      2020,
+      2025
+    ],
+    "median_salary_usd": 138750.0,
+    "mean_salary_usd": 151161.2526246993,
+    "us_employee_residence_share_pct": 83.55234797602658,
+    "india_employee_residence_rows": 229,
+    "india_employee_residence_share_pct": 0.318440337630192,
+    "share_2024_2025_pct": 91.73862862069446,
+    "warning": "Use only as a secondary AI/data/tech salary dataset. It is heavily US- and 2024\u201325-weighted and is not representative of all professions or India."
+  },
+  "ai_impact_2030": {
+    "rows": 3000,
+    "missing_cells": 0,
+    "status": "SYNTHETIC \u2014 keep for classroom/simulation experiments only; never present as observed labour-market evidence.",
+    "diagnostic": "Key numeric variables are essentially uncorrelated in this selected file (e.g., replacement risk vs future demand \u2248 0), consistent with simulated data."
+  },
+  "layoff_risk_dataset": {
+    "rows": 20000,
+    "missing_cells": 0,
+    "status": "UNVERIFIED / model-like \u2014 do not use as factual labour-market evidence.",
+    "diagnostic": "Routine_Task_Percentage and Creativity_Requirement have an unusually engineered correlation around -0.93 in this selected file. Use only for explicitly labelled conceptual simulation if at all."
+  }
+}

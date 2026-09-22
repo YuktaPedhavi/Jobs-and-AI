@@ -1,0 +1,41 @@
+occupation_title,job_category,ai_exposure_llm_human,ai_exposure_llm_gpt4,ai_exposure_aioe,human_gpt4_gap,abs_human_gpt4_gap,projected_growth_pct_2024_2034
+Medical transcriptionists,Healthcare,0.232,0.875,1.063,-0.643,0.643,-5.0
+"Bookkeeping, accounting, and auditing clerks",Office And Administrative Support,0.314,0.802,1.04,-0.48800000000000004,0.48800000000000004,-6.0
+Court reporters and simultaneous captioners,Legal,0.521,0.958,1.111,-0.43699999999999994,0.43699999999999994,0.0
+Music directors and composers,Entertainment And Sports,0.281,0.711,0.883,-0.42999999999999994,0.42999999999999994,0.0
+Computer hardware engineers,Architecture And Engineering,0.318,0.727,1.142,-0.409,0.409,7.0
+Musicians and singers,Entertainment And Sports,0.133,0.408,-0.004,-0.27499999999999997,0.27499999999999997,1.0
+Bill and account collectors,Office And Administrative Support,0.429,0.696,1.272,-0.26699999999999996,0.26699999999999996,-10.0
+Optometrists,Healthcare,0.05,0.3,0.504,-0.25,0.25,8.0
+Quality control inspectors,Production,0.177,0.417,-0.029,-0.24,0.24,0.0
+Concierges,Personal Care And Service,0.7,0.467,0.856,0.23299999999999993,0.23299999999999993,2.0
+Fitness trainers and instructors,Personal Care And Service,0.235,0.015,-2.112,0.21999999999999997,0.21999999999999997,12.0
+Survey researchers,Life Physical And Social Science,0.844,0.625,1.427,0.21899999999999997,0.21899999999999997,-5.0
+Medical assistants,Healthcare,0.141,0.359,0.15,-0.218,0.218,12.0
+Tellers,Office And Administrative Support,0.333,0.542,0.473,-0.20900000000000002,0.20900000000000002,-13.0
+Agricultural and food scientists,Life Physical And Social Science,0.658,0.456,0.823,0.202,0.202,6.0
+Childcare workers,Personal Care And Service,0.34,0.141,-0.383,0.19900000000000004,0.19900000000000004,-3.0
+Public relations specialists,Media And Communication,0.788,0.591,1.285,0.19700000000000006,0.19700000000000006,5.0
+Forensic science technicians,Life Physical And Social Science,0.194,0.387,0.24,-0.193,0.193,13.0
+Environmental scientists and specialists,Life Physical And Social Science,0.71,0.522,1.014,0.18799999999999994,0.18799999999999994,4.0
+Cardiovascular technologists and technicians,Healthcare,0.171,0.357,-0.091,-0.18599999999999997,0.18599999999999997,3.0
+Emergency management directors,Management,0.6,0.422,1.031,0.178,0.178,3.0
+Semiconductor processing technicians,Production,0.062,0.234,-0.637,-0.17200000000000001,0.17200000000000001,11.0
+Personal financial advisors,Business And Financial,0.671,0.5,1.401,0.17100000000000004,0.17100000000000004,10.0
+Materials engineers,Architecture And Engineering,0.317,0.488,1.037,-0.17099999999999999,0.17099999999999999,6.0
+Marriage and family therapists,Community And Social Service,0.278,0.111,1.367,0.16700000000000004,0.16700000000000004,13.0
+Dental assistants,Healthcare,0.1,0.267,-0.527,-0.167,0.167,6.0
+Models,Sales,0.4,0.233,-1.122,0.167,0.167,-1.0
+Electro-mechanical and mechatronics technologists and technicians,Architecture And Engineering,0.221,0.387,-0.304,-0.166,0.166,1.0
+Photographers,Media And Communication,0.219,0.385,-0.168,-0.166,0.166,2.0
+"Broadcast, sound, and video technicians",Media And Communication,0.221,0.386,0.377,-0.165,0.165,1.0
+Electrical and electronics engineers,Architecture And Engineering,0.427,0.591,0.896,-0.16399999999999998,0.16399999999999998,7.0
+Desktop publishers,Office And Administrative Support,0.484,0.645,0.344,-0.16100000000000003,0.16100000000000003,-12.0
+Physician assistants,Healthcare,0.11,0.271,0.106,-0.16100000000000003,0.16100000000000003,20.0
+Coaches and scouts,Entertainment And Sports,0.144,0.3,0.117,-0.156,0.156,6.0
+Advertising sales agents,Sales,0.692,0.538,1.163,0.15399999999999991,0.15399999999999991,-6.0
+Cashiers,Sales,0.36,0.209,-0.248,0.151,0.151,-10.0
+Medical dosimetrists,Healthcare,0.3,0.45,-0.18,-0.15000000000000002,0.15000000000000002,3.0
+Project management specialists,Business And Financial,0.4,0.55,1.297,-0.15000000000000002,0.15000000000000002,6.0
+Biological technicians,Life Physical And Social Science,0.267,0.417,0.301,-0.14999999999999997,0.14999999999999997,3.0
+Physical therapists,Healthcare,0.34,0.191,-0.358,0.14900000000000002,0.14900000000000002,11.0

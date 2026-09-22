@@ -1,0 +1,7 @@
+exposure_vs_median,growth_direction,occupation_count,employment_2024_sum,employment_share_of_this_dataset_pct
+Higher exposure (at/above dataset median),Declining,18,7059500.0,8.655601588525734
+Higher exposure (at/above dataset median),Flat,7,1685800.0,2.066947114942515
+Higher exposure (at/above dataset median),Growing,112,23365000.0,28.647656507671048
+Lower exposure (below dataset median),Declining,24,15382800.0,18.860739162259886
+Lower exposure (below dataset median),Flat,5,2013000.0,2.4681246543951136
+Lower exposure (below dataset median),Growing,105,32053800.0,39.300930972205705

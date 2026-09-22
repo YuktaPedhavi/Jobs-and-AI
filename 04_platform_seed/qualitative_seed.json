@@ -1,0 +1,35 @@
+{
+  "rule": "No synthetic interview quotations. Distinguish source-derived qualitative themes from future primary fieldwork.",
+  "source_derived_themes": [
+    {
+      "theme_id": "Q01",
+      "theme": "Verification becomes part of professional AI use",
+      "evidence": "Experienced GenAI users in ILO Poland focus groups tended to regard checking AI outputs as an ordinary part of work.",
+      "source_id": "S11",
+      "use": "Supports 'judgement' as a skill; present as qualitative theme."
+    },
+    {
+      "theme_id": "Q02",
+      "theme": "Skill erosion and creativity are lived concerns",
+      "evidence": "Occasional GenAI users in the ILO qualitative research expressed more concern about loss of creativity and erosion of underlying skills.",
+      "source_id": "S11",
+      "use": "Human tension in New Advantage; do not attach prevalence unless source provides it."
+    },
+    {
+      "theme_id": "Q03",
+      "theme": "AI adoption can outrun organisational governance",
+      "evidence": "Formal employer introduction (9.4%) lagged reported personal use in the previous week (16.7%) in the Polish worker survey.",
+      "source_id": "S11",
+      "use": "Shows 'shadow adoption' / side-door dynamic."
+    },
+    {
+      "theme_id": "Q04",
+      "theme": "Consultation changes the adoption experience",
+      "evidence": "Workers in workplaces that introduced GenAI with consultation reported more use and appetite for more use; opposition was higher where dialogue was absent.",
+      "source_id": "S11",
+      "use": "Shows organisational design is part of AI's labour impact."
+    }
+  ],
+  "primary_fieldwork_goal": "Collect original accounts of how AI changes task allocation, expectations of junior staff, learning pathways, quality control, workload and perceived capture of productivity gains.",
+  "recommended_sample": "12–20 semi-structured interviews across early-career workers/students, mid-career professionals, senior practitioners/managers and hiring/recruiting roles. Seek variation in AI adoption rather than statistical representativeness."
+}

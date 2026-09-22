@@ -1,0 +1,17 @@
+{
+  "pack_name": "The New Value of Work — Research-to-Platform Pack",
+  "version": "1.0",
+  "created": "2026-09-16",
+  "purpose": "A reusable, machine-readable research dossier and Google AI Studio prompt pack for an interactive data-storytelling website.",
+  "authoring_rule": "Research claims live in 03_sources/claim_database.*; platform story files reference claim IDs instead of duplicating authoritative facts.",
+  "directory_map": {
+    "00_START_HERE": "Human + AI onboarding and pack usage",
+    "01_research": "Narrative research dossier and evidence architecture",
+    "02_data": "Raw uploaded dataset plus derived analysis tables",
+    "03_sources": "Source registry and atomic claim database",
+    "04_platform_seed": "Story/content/design/visualisation JSON consumed by the website build",
+    "05_prompt_pack": "Copy-paste prompts for Google AI Studio",
+    "06_fieldwork": "Primary qualitative research plan and coding schema",
+    "07_reproducibility": "Analysis script and methodological notes"
+  }
+}

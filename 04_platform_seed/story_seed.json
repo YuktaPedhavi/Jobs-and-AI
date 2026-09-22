@@ -1,0 +1,150 @@
+{
+  "project_title": "THE NEW VALUE OF WORK",
+  "subtitle": "How AI is changing what work is worth — and who gets to capture that value",
+  "locked_thesis": "AI is not simply removing jobs. It is changing the value of tasks inside jobs. Routine cognitive work can become cheaper while judgement, domain knowledge, experience and effective AI use become more valuable. Productivity gains do not automatically become wage gains, and the transition may be particularly consequential at the beginning of a career.",
+  "central_question": "If AI makes one worker capable of producing more, who captures the extra value?",
+  "human_question": "If AI increasingly performs beginner-level cognitive tasks, how will the next generation build the experience needed to become experts?",
+  "primary_audience": "Students and early-career knowledge workers, roughly 18–30, especially people entering technology, data, design, business, finance, research and other digitally mediated work.",
+  "secondary_audience": "Educators, managers, recruiters, mid-career workers and researchers.",
+  "emotional_arc": [
+    "fear",
+    "curiosity",
+    "evidence",
+    "contradiction",
+    "human tension",
+    "agency"
+  ],
+  "chapters": [
+    {
+      "id": "01_fear",
+      "title": "THE FEAR",
+      "hook": "“AI is coming for your job.”",
+      "purpose": "Replace the job-loss binary with a task-level mental model.",
+      "key_question": "What exactly is exposed when AI enters a profession?",
+      "claim_ids": [
+        "C001",
+        "C002",
+        "C003"
+      ],
+      "interaction": "Task Decomposer: select a knowledge-work role and visually split it into tasks. Mark tasks as potentially automatable, augmentable, or still human-intensive without pretending the toy interaction is a new empirical exposure model.",
+      "visuals": [
+        "large-number exposure reveal",
+        "nested exposure ladder",
+        "job → task decomposition animation"
+      ],
+      "transition": "A job is not one task. So exposure does not automatically equal replacement.",
+      "guardrail": "Never label 25% of jobs as 'at risk of disappearing'."
+    },
+    {
+      "id": "02_boost",
+      "title": "THE BOOST",
+      "hook": "AI can make one worker capable of doing more.",
+      "purpose": "Establish that measurable productivity gains exist, while showing heterogeneous effects.",
+      "key_question": "Who gains the most from AI assistance?",
+      "claim_ids": [
+        "C004",
+        "C005"
+      ],
+      "interaction": "Productivity Lens: toggle Average vs Novice/Lower-skilled to reveal 14% versus 34% in the customer-support field study; always show sample/context.",
+      "visuals": [
+        "paired bar or number comparison",
+        "experience-curve illustration"
+      ],
+      "transition": "If output rises, does the worker become economically more valuable?",
+      "guardrail": "Do not generalise the 14% or 34% effect to all occupations."
+    },
+    {
+      "id": "03_value_gap",
+      "title": "THE VALUE GAP",
+      "hook": "More productive does not automatically mean better paid.",
+      "purpose": "Create the project's core economic tension using Denmark + project salary data + AI-skill evidence.",
+      "key_question": "What is the labour market actually rewarding?",
+      "claim_ids": [
+        "C006",
+        "C007",
+        "C008",
+        "D001",
+        "D002",
+        "D003",
+        "D004"
+      ],
+      "interaction": "Salary Explorer powered by derived local JSON: filter role archetype and experience. Show median, IQR, N, and a persistent 'association ≠ causation' note. The 9.6% adjusted result appears only in an explainer card with model controls.",
+      "visuals": [
+        "productivity vs earnings tension card",
+        "experience salary ladder",
+        "role salary distribution/explorer"
+      ],
+      "transition": "The premium seems less about 'AI' in the abstract and more about where AI meets scarce expertise.",
+      "guardrail": "PwC's 62% is an observational job-ad wage premium, not a guaranteed pay increase."
+    },
+    {
+      "id": "04_first_rung",
+      "title": "THE MISSING FIRST RUNG",
+      "hook": "If AI can do beginner work, how does a beginner become an expert?",
+      "purpose": "Make the early-career transition the human centre of the platform.",
+      "key_question": "Is the traditional learning ladder being redesigned?",
+      "claim_ids": [
+        "C009",
+        "C010",
+        "C011",
+        "D005"
+      ],
+      "interaction": "Career Ladder: show the traditional sequence (routine tasks → feedback → judgement → seniority), then visually remove/transform routine tasks. A 'Show the caveat' control reveals the OECD warning before the user can leave this section.",
+      "visuals": [
+        "100% experience composition by role archetype",
+        "seniorised junior-job evidence card",
+        "young-worker employment-gap card with caveat"
+      ],
+      "transition": "AI may democratise task performance while making the route to accumulated expertise less straightforward.",
+      "guardrail": "Never say AI caused a 19% fall in youth employment. Keep Stanford finding and OECD caveat inseparable."
+    },
+    {
+      "id": "05_new_advantage",
+      "title": "THE NEW ADVANTAGE",
+      "hook": "The human advantage is moving from production toward judgement.",
+      "purpose": "Show the combination of technical capability, domain knowledge, verification, communication and responsibility.",
+      "key_question": "Which capabilities become scarce when routine cognitive production becomes cheap?",
+      "claim_ids": [
+        "C012",
+        "C013",
+        "C014",
+        "C019",
+        "C020",
+        "C021",
+        "C022"
+      ],
+      "interaction": "Skill Stack: users assemble 'AI capability + domain knowledge + judgement + communication + responsibility'. Avoid fake scoring; each layer reveals sourced evidence instead.",
+      "visuals": [
+        "59-of-100 training visual",
+        "skill-gap number",
+        "qualitative theme cards",
+        "governance gap visual"
+      ],
+      "transition": "The value of AI depends not just on the tool, but on who can use, verify and govern it.",
+      "guardrail": "Do not fabricate worker quotes; qualitative material must be paraphrased unless an approved verbatim quote is later supplied."
+    },
+    {
+      "id": "06_who_gets_value",
+      "title": "WHO GETS THE VALUE?",
+      "hook": "A faster worker does not automatically become a richer worker.",
+      "purpose": "Bring the question home to India and end on distribution of value rather than technological inevitability.",
+      "key_question": "Who has the skills, opportunity and bargaining power to capture AI-created value?",
+      "claim_ids": [
+        "C015",
+        "C016",
+        "C017",
+        "C018",
+        "D006"
+      ],
+      "interaction": "India Lens: show the IMF 26% exposure split as 14% complementarity + 12% higher displacement risk, then layer the NASSCOM skills/talent opportunity. Explicitly switch away from the project dataset because its India sample is too small.",
+      "visuals": [
+        "26% split bar",
+        "AI talent-pool projection",
+        "dataset representativeness warning"
+      ],
+      "transition": "End, do not resolve: the future of work depends on capability, pathways to experience, organisational choices and how productivity gains are distributed.",
+      "guardrail": "India evidence comes from IMF/NASSCOM external research, not the US-heavy salary dataset."
+    }
+  ],
+  "final_line": "IF AI MAKES YOUR WORK MORE VALUABLE, WHO GETS THE VALUE?"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "The New Value of Work",
+  "description": "How AI Is Changing Work: Jobs, Skills, Productivity and Career Paths Across 271 Occupations",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
