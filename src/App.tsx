@@ -13,7 +13,7 @@ import { Chapter10YourProfession } from './components/chapters/Chapter10YourProf
 import { EvidenceDrawer } from './components/EvidenceDrawer';
 import { MethodologyModal } from './components/MethodologyModal';
 import { occupations271, Occupation271 } from './data/occupations271';
-import { ShieldCheck, Database, ArrowDown } from 'lucide-react';
+import { ShieldCheck, Database } from 'lucide-react';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { CustomCursor } from './components/CustomCursor';
 
@@ -128,80 +128,17 @@ const MainApp: React.FC = () => {
             borderColor: palette.border
           }}
         >
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-6">
-            <header className="space-y-3 max-w-3xl">
-              <div
-                className="flex items-center gap-2 text-xs font-mono tracking-wider"
-                style={{ color: palette.cyan }}
-              >
-                <span className="font-bold">01</span>
-                <span aria-hidden="true">·</span>
-                <span>Explore the Living Atlas</span>
-              </div>
-
-              <h2
-                className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-[1.08]"
-                style={{ color: palette.textMain, textWrap: 'balance' }}
-              >
-                Explore 271 Jobs
-              </h2>
-
-              <p
-                className="text-base sm:text-xl font-sans leading-relaxed"
-                style={{ color: palette.textMuted }}
-              >
-                See how AI exposure differs across occupations. Exposure measures task overlap with language models—not the probability of losing a job.
-              </p>
-            </header>
-
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <OccupationConstellation
               activeOccupation={activeOccupation}
               onSelectOccupation={(occ) => {
                 setActiveOccupation(occ);
               }}
+              onExploreProfile={handleOpenInLookup}
+              onNextSection={() => handleSelectChapter('ch02_exposure_growth')}
+              onOpenMethodology={() => setMethodologyModalOpen(true)}
               initialMode="constellation"
-              interactiveControls={true}
-              height={400}
             />
-
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-2 text-xs">
-              <div className="flex flex-wrap items-center gap-4 font-mono text-[11px]">
-                <span className="inline-flex items-center gap-1.5" style={{ color: palette.textMain }}>
-                  <span
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: '#06B6D4' }}
-                    aria-hidden="true"
-                  />
-                  <span>High Exposure (72)</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5" style={{ color: palette.textMain }}>
-                  <span
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: '#F59E0B' }}
-                    aria-hidden="true"
-                  />
-                  <span>Medium Exposure (94)</span>
-                </span>
-                <span className="inline-flex items-center gap-1.5" style={{ color: palette.textMain }}>
-                  <span
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: '#10B981' }}
-                    aria-hidden="true"
-                  />
-                  <span>Low Exposure (105)</span>
-                </span>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => handleSelectChapter('ch02_exposure_growth')}
-                className="font-mono text-xs font-semibold hover:underline inline-flex items-center gap-1.5 cursor-pointer"
-                style={{ color: palette.cyan }}
-              >
-                <span>Next: Does More AI Exposure Mean Fewer Jobs?</span>
-                <ArrowDown className="w-3.5 h-3.5" />
-              </button>
-            </div>
           </div>
         </section>
 
