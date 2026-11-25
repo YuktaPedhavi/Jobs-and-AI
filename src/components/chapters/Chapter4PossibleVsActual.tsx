@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { EvidenceBadge } from '../EvidenceBadge';
 import { useTheme } from '../../context/ThemeContext';
 import { ArrowRight, ArrowDown, ChevronDown, ExternalLink } from 'lucide-react';
+import { Chapter5RealWorkday } from './Chapter5RealWorkday';
 
 interface Chapter4Props {
   onOpenEvidence: (id: string) => void;
@@ -159,7 +160,7 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
 
   return (
     <article
-      id="ch04_possible_actual"
+      id="ch04_real_workplace"
       className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
       style={{
         backgroundColor: palette.canvasBg,
@@ -178,21 +179,21 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
           >
             <span className="font-bold">04</span>
             <span aria-hidden="true">·</span>
-            <span>Possible ≠ Actual</span>
+            <span>AI in the Real Workplace</span>
           </div>
 
           <h2
             className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-[1.08]"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            AI can do it. But are people using it?
+            What Can AI Do — and What Happens at Work?
           </h2>
 
           <p
             className="text-base sm:text-xl font-sans leading-relaxed"
             style={{ color: palette.textMuted }}
           >
-            AI may be capable of assisting with many tasks, but actual workplace use depends on people, organisations and practical constraints.
+            Being able to perform a task in theory does not mean AI is already doing it in every workplace. Adoption moves through real-world constraints into everyday work.
           </p>
         </header>
 
@@ -1205,7 +1206,12 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
         </section>
 
         {/* =================================================================== */}
-        {/* 5. CONCISE CLOSING MESSAGE                                          */}
+        {/* 5. ILLUSTRATIVE WORKDAY EXPLORER (EMBEDDED FROM CH05)               */}
+        {/* =================================================================== */}
+        <Chapter5RealWorkday embedded onOpenEvidence={onOpenEvidence} />
+
+        {/* =================================================================== */}
+        {/* 6. CONCISE CLOSING MESSAGE                                          */}
         {/* =================================================================== */}
         <footer
           className="pt-10 pb-2 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -1215,15 +1221,15 @@ export const Chapter4PossibleVsActual: React.FC<Chapter4Props> = ({ onOpenEviden
             className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight leading-snug max-w-3xl"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            What AI can do is not the same as what people use it for.
+            AI can assist with tasks. People still make important decisions.
           </p>
 
           <a
-            href="#ch05_real_workday"
+            href="#ch05_productivity"
             className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold whitespace-nowrap shrink-0 hover:underline self-start sm:self-center"
             style={{ color: palette.lime }}
           >
-            <span>Next: Real Workdays</span>
+            <span>Next: Productivity</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </footer>

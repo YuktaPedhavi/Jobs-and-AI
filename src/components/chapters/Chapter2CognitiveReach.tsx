@@ -261,7 +261,7 @@ export const Chapter2CognitiveReach: React.FC<Chapter2Props> = ({
 
   return (
     <article
-      id="ch02_cognitive_reach"
+      id="ch03_understanding_tasks"
       className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
       style={{
         backgroundColor: palette.canvasBg,
@@ -276,23 +276,23 @@ export const Chapter2CognitiveReach: React.FC<Chapter2Props> = ({
             className="flex items-center gap-2 text-xs font-mono tracking-wider"
             style={{ color: palette.cyan }}
           >
-            <span className="font-bold">02</span>
+            <span className="font-bold">03</span>
             <span aria-hidden="true">·</span>
-            <span>Task Map</span>
+            <span>Understanding Tasks</span>
           </div>
 
           <h2
             className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-[1.08]"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            AI changes tasks first.
+            Which Parts of Work Can AI Change?
           </h2>
 
           <p
             className="text-base sm:text-xl font-sans leading-relaxed"
             style={{ color: palette.textMuted }}
           >
-            Some everyday tasks may be more exposed to AI than others.
+            AI interacts with specific workplace tasks first—not entire jobs at once.
           </p>
         </header>
 

@@ -7,6 +7,7 @@ interface Chapter3Props {
   activeOccupation: Occupation271;
   onSelectOccupation: (occ: Occupation271) => void;
   onOpenEvidence: (id: string) => void;
+  embedded?: boolean;
 }
 
 const SUGGESTED_CODES = [
@@ -28,7 +29,8 @@ const AIOE_DATA_MAX = 1.528;
 export const Chapter3ThreeLenses: React.FC<Chapter3Props> = ({
   activeOccupation,
   onSelectOccupation,
-  onOpenEvidence
+  onOpenEvidence,
+  embedded = false
 }) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -115,18 +117,9 @@ export const Chapter3ThreeLenses: React.FC<Chapter3Props> = ({
     setSearchQuery('');
   };
 
-  return (
-    <article
-      id="ch03_three_lenses"
-      className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
-      style={{
-        backgroundColor: palette.canvasBg,
-        borderColor: palette.border,
-        color: palette.textMain
-      }}
-    >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
-        {/* Compact Opening Header */}
+  const innerContent = (
+    <div className={embedded ? 'space-y-6' : 'max-w-5xl mx-auto px-4 sm:px-6 space-y-10'}>
+      {!embedded && (
         <header className="space-y-3 max-w-3xl">
           <div
             className="flex items-center gap-2 text-xs font-mono tracking-wider"
@@ -151,9 +144,10 @@ export const Chapter3ThreeLenses: React.FC<Chapter3Props> = ({
             The same occupation can receive different exposure scores depending on how it is measured.
           </p>
         </header>
+      )}
 
-        {/* Simplified Occupation Selector */}
-        <section aria-label="Occupation selector" className="space-y-3">
+      {/* Simplified Occupation Selector */}
+      <section aria-label="Occupation selector" className="space-y-3">
           <div className="flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <Search
@@ -638,6 +632,23 @@ export const Chapter3ThreeLenses: React.FC<Chapter3Props> = ({
           </div>
         </section>
       </div>
+  );
+
+  if (embedded) {
+    return innerContent;
+  }
+
+  return (
+    <article
+      id="ch03_three_lenses"
+      className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
+      style={{
+        backgroundColor: palette.canvasBg,
+        borderColor: palette.border,
+        color: palette.textMain
+      }}
+    >
+      {innerContent}
     </article>
   );
 };

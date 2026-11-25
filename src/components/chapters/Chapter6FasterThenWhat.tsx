@@ -408,7 +408,7 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
 
   return (
     <article
-      id="ch06_faster_then_what"
+      id="ch05_productivity"
       className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
       style={{
         backgroundColor: palette.canvasBg,
@@ -427,14 +427,14 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
           >
             <span className="font-bold">05</span>
             <span aria-hidden="true">·</span>
-            <span>Productivity &amp; Skill Compression</span>
+            <span>Productivity &amp; Its Consequences</span>
           </div>
 
           <h2
             className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-[1.08]"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            AI makes tasks faster. But who actually benefits?
+            AI Makes Tasks Faster. Who Benefits?
           </h2>
 
           <p
@@ -1237,11 +1237,11 @@ export const Chapter6FasterThenWhat: React.FC<Chapter6Props> = ({ onOpenEvidence
           </p>
 
           <a
-            href="#ch07_career_ladder"
+            href="#ch06_careers_skills"
             className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold whitespace-nowrap shrink-0 hover:underline self-start sm:self-center"
             style={{ color: palette.lime }}
           >
-            <span>Next: The Career Ladder</span>
+            <span>Next: Careers &amp; Human Skills</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </footer>

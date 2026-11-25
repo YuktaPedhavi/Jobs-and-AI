@@ -133,7 +133,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 The primary dataset is geographically skewed: <strong className="text-[#EEF2F6]">83.6% of records represent US residence</strong>, with Western Europe comprising 12.1%, and India representing only <strong className="text-[#EEF2F6]">0.3% (229 records)</strong>.
               </p>
               <div className="p-2.5 bg-[#161C25] border border-[#F43F5E]/40 rounded text-[11px] text-[#EEF2F6] font-medium">
-                <strong className="text-[#F43F5E]">Enforced Platform Rule:</strong> Under no circumstances do we draw generalized conclusions about Indian tech wages from the project dataset. All insights regarding India (Chapter 9) are strictly drawn from official research by the <strong>International Monetary Fund (IMF 2025)</strong> and <strong>NASSCOM (2024–2026)</strong>.
+                <strong className="text-[#F43F5E]">Enforced Platform Rule:</strong> Under no circumstances do we draw generalized conclusions about Indian tech wages from the project dataset. All insights regarding India (Explore More: India Perspective) are strictly drawn from official research by the <strong>International Monetary Fund (IMF 2025)</strong> and <strong>NASSCOM (2024–2026)</strong>.
               </div>
             </div>
           </div>

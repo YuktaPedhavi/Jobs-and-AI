@@ -346,72 +346,84 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
     }
   };
 
+  const palette = {
+    canvasBg: isDark ? '#071731' : '#f1efe6',
+    surfaceBg: isDark ? '#0b1f3c' : '#ffffff',
+    border: isDark ? '#163560' : '#d5dde7',
+    textMain: isDark ? '#f7faeb' : '#061329',
+    textMuted: isDark ? '#9bb2cf' : '#475e77',
+    cyan: isDark ? '#22d3ee' : '#0284c7',
+    amber: isDark ? '#f59e0b' : '#b45309',
+    emerald: isDark ? '#10b981' : '#059669'
+  };
+
   return (
     <div ref={containerRef} className={`relative select-none ${className}`}>
       {/* View Mode Switcher */}
       {interactiveControls && (
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-3 border-b border-[#1E2633] pb-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#22D3EE] animate-pulse" />
-            <span className="text-xs font-mono text-[#94A3B8] uppercase tracking-wider">
-              271 Occupations Visual System
-            </span>
-          </div>
+        <div
+          className="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b"
+          style={{ borderColor: palette.border }}
+        >
+          <span
+            className="text-xs font-mono uppercase tracking-wider"
+            style={{ color: palette.textMuted }}
+          >
+            271 U.S. Occupations · View Mode
+          </span>
 
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#161C25] rounded-xl border border-[#222B38]">
-            <button
-              onClick={() => setViewMode('constellation')}
-              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
-                viewMode === 'constellation'
-                  ? 'bg-[#22D3EE] text-[#0C1016] font-bold'
-                  : 'text-[#94A3B8] hover:text-[#EEF2F6] hover:bg-[#1C2430]'
-              }`}
-            >
-              <Compass className="w-3.5 h-3.5" />
-              <span>Constellation</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode('categories')}
-              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
-                viewMode === 'categories'
-                  ? 'bg-[#22D3EE] text-[#0C1016] font-bold'
-                  : 'text-[#94A3B8] hover:text-[#EEF2F6] hover:bg-[#1C2430]'
-              }`}
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>22 Categories</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode('scatterplot')}
-              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
-                viewMode === 'scatterplot'
-                  ? 'bg-[#22D3EE] text-[#0C1016] font-bold'
-                  : 'text-[#94A3B8] hover:text-[#EEF2F6] hover:bg-[#1C2430]'
-              }`}
-            >
-              <BarChart2 className="w-3.5 h-3.5" />
-              <span>AI Exposure × Growth</span>
-            </button>
-
-            <button
-              onClick={() => setViewMode('skills')}
-              className={`px-3 py-1 text-xs font-mono rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
-                viewMode === 'skills'
-                  ? 'bg-[#22D3EE] text-[#0C1016] font-bold'
-                  : 'text-[#94A3B8] hover:text-[#EEF2F6] hover:bg-[#1C2430]'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Cognitive Families</span>
-            </button>
+          <div
+            role="tablist"
+            aria-label="Living Atlas view modes"
+            className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl border"
+            style={{
+              backgroundColor: palette.surfaceBg,
+              borderColor: palette.border
+            }}
+          >
+            {[
+              { id: 'constellation' as const, label: 'Constellation', icon: Compass },
+              { id: 'categories' as const, label: '22 Categories', icon: Layers },
+              { id: 'scatterplot' as const, label: 'AI Exposure × Growth', icon: BarChart2 },
+              { id: 'skills' as const, label: 'Cognitive Families', icon: Sparkles }
+            ].map((tab) => {
+              const Icon = tab.icon;
+              const isSelected = viewMode === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setViewMode(tab.id)}
+                  className="px-3 py-1.5 min-h-[36px] text-xs font-mono rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 focus:outline-none focus-visible:ring-2"
+                  style={{
+                    backgroundColor: isSelected ? palette.cyan : 'transparent',
+                    color: isSelected
+                      ? isDark
+                        ? '#061329'
+                        : '#ffffff'
+                      : palette.textMuted,
+                    fontWeight: isSelected ? 700 : 500
+                  }}
+                >
+                  <Icon className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
 
       {/* Canvas */}
-      <div className="relative bg-[#0C1016] rounded-2xl border border-[#1E2633] overflow-hidden">
+      <div
+        className="relative rounded-2xl border overflow-hidden"
+        style={{
+          backgroundColor: palette.canvasBg,
+          borderColor: palette.border
+        }}
+      >
         <canvas
           ref={canvasRef}
           width={dimensions.width}
@@ -419,65 +431,92 @@ export const OccupationConstellation: React.FC<OccupationConstellationProps> = (
           onMouseMove={handleMouseMove}
           onMouseLeave={() => setHoveredNode(null)}
           onClick={handleClick}
+          role="img"
+          aria-label={`Interactive Living Atlas of 271 occupations in ${viewMode} view. Selected occupation: ${activeOccupation.occupation_title}.`}
           className="cursor-crosshair w-full block"
         />
 
-        {/* Hover Tooltip / Editorial Chip */}
+        {/* Hover Tooltip */}
         {hoveredNode && (
           <div
-            className="absolute pointer-events-none z-30 transform -translate-x-1/2 -translate-y-full mb-3 px-3.5 py-2.5 bg-[#161C25]/95 border border-[#22D3EE]/50 rounded-xl shadow-2xl backdrop-blur-md text-xs space-y-1 w-64"
+            className="absolute pointer-events-none z-30 transform -translate-x-1/2 -translate-y-full mb-3 px-3.5 py-2.5 rounded-xl border shadow-2xl backdrop-blur-md text-xs space-y-1 w-64"
             style={{
               left: Math.max(130, Math.min(dimensions.width - 130, hoveredNode.x)),
-              top: Math.max(80, hoveredNode.y - 12)
+              top: Math.max(80, hoveredNode.y - 12),
+              backgroundColor: palette.surfaceBg,
+              borderColor: palette.cyan,
+              color: palette.textMain
             }}
           >
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#94A3B8]">
-              <span className="uppercase">{hoveredNode.occ.job_category}</span>
-              <span className="text-[#22D3EE]">SOC {hoveredNode.occ.soc_code}</span>
+            <div className="flex items-center justify-between text-[10px] font-mono" style={{ color: palette.textMuted }}>
+              <span className="truncate pr-2">{hoveredNode.occ.job_category}</span>
+              <span style={{ color: palette.cyan }}>SOC {hoveredNode.occ.soc_code}</span>
             </div>
-            <div className="font-display font-extrabold text-sm tracking-tight text-[#EEF2F6]">
+            <div className="font-sans font-bold text-sm tracking-tight" style={{ color: palette.textMain }}>
               {hoveredNode.occ.occupation_title}
             </div>
-            <div className="grid grid-cols-2 gap-2 pt-1 border-t border-[#222B38] font-mono text-[11px]">
+            <div
+              className="grid grid-cols-2 gap-2 pt-1 border-t font-mono text-[11px]"
+              style={{ borderColor: palette.border }}
+            >
               <div>
-                <span className="text-[#94A3B8] block text-[9px]">How AI affects:</span>
-                <span className="font-bold text-[#22D3EE]">
+                <span className="block text-[9px]" style={{ color: palette.textMuted }}>
+                  AI Task Overlap:
+                </span>
+                <span className="font-bold tabular-nums" style={{ color: palette.cyan }}>
                   {(hoveredNode.occ.ai_exposure_llm_human * 100).toFixed(0)}%
                 </span>
               </div>
               <div>
-                <span className="text-[#94A3B8] block text-[9px]">Expected growth:</span>
+                <span className="block text-[9px]" style={{ color: palette.textMuted }}>
+                  2024–34 Growth:
+                </span>
                 <span
-                  className={`font-bold ${
-                    hoveredNode.occ.projected_growth_pct_2024_2034 > 0 ? 'text-[#10B981]' : 'text-[#F43F5E]'
-                  }`}
+                  className="font-bold tabular-nums"
+                  style={{
+                    color:
+                      hoveredNode.occ.projected_growth_pct_2024_2034 >= 0
+                        ? palette.emerald
+                        : '#f43f5e'
+                  }}
                 >
                   {hoveredNode.occ.projected_growth_pct_2024_2034 > 0 ? '+' : ''}
                   {hoveredNode.occ.projected_growth_pct_2024_2034}%
                 </span>
               </div>
             </div>
-            <div className="text-[10px] text-[#94A3B8] pt-1">Click to track this profession</div>
+            <div className="text-[10px] pt-1" style={{ color: palette.textMuted }}>
+              Click particle to track across the story
+            </div>
           </div>
         )}
 
         {/* Legend / Key indicator at bottom */}
-        <div className="absolute bottom-2.5 left-4 right-4 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-[#94A3B8] pointer-events-none">
-          <div className="flex items-center gap-4">
+        <div
+          className="px-4 py-2.5 border-t flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono"
+          style={{
+            borderColor: palette.border,
+            backgroundColor: palette.surfaceBg,
+            color: palette.textMuted
+          }}
+        >
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="inline-flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#06B6D4]" /> High Exposure (72)
+              <span className="w-2.5 h-2.5 rounded-full bg-[#06B6D4]" aria-hidden="true" />
+              High Exposure (72)
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#F59E0B]" /> Medium (94)
+              <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" aria-hidden="true" />
+              Medium (94)
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#10B981]" /> Low Exposure (105)
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#22D3EE] ring-2 ring-white/50" /> Selected: {activeOccupation.occupation_title}
+              <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]" aria-hidden="true" />
+              Low Exposure (105)
             </span>
           </div>
-          <span className="text-[10px] text-[#64748B]">Hover to inspect · Click to track</span>
+          <span className="text-[11px]">
+            Selected: <strong style={{ color: palette.textMain }}>{activeOccupation.occupation_title}</strong> ({(activeOccupation.ai_exposure_llm_human * 100).toFixed(0)}%)
+          </span>
         </div>
       </div>
     </div>

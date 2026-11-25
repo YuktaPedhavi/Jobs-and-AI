@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Occupation271, occupations271 } from '../../data/occupations271';
 import { curatedOccupations, calculatedKeyFindings } from '../../data/researchData';
 import { useTheme } from '../../context/ThemeContext';
-import { Search, Scale, ChevronDown, BookOpen } from 'lucide-react';
+import { Search, Scale, ChevronDown, BookOpen, ArrowRight } from 'lucide-react';
 
 interface Chapter10Props {
   activeOccupation: Occupation271;
@@ -426,7 +426,7 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
 
   return (
     <article
-      id="ch10_your_profession"
+      id="ch07_your_profession"
       className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
       style={{
         backgroundColor: palette.canvasBg,
@@ -441,23 +441,23 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
             className="flex items-center gap-2 text-xs font-mono tracking-wider"
             style={{ color: palette.cyan }}
           >
-            <span className="font-bold">08</span>
+            <span className="font-bold">07</span>
             <span aria-hidden="true">·</span>
-            <span>Look Up Your Profession</span>
+            <span>Explore Your Profession</span>
           </div>
 
           <h2
             className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-[1.08]"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            How might AI change your job?
+            What Does This Mean for Your Job?
           </h2>
 
           <p
             className="text-base sm:text-xl font-sans leading-relaxed"
             style={{ color: palette.textMuted }}
           >
-            Explore AI exposure, employment outlook and the tasks involved in your profession.
+            Explore AI exposure, employment outlook and everyday tasks across 271 U.S. occupations.
           </p>
         </header>
 
@@ -1171,6 +1171,24 @@ export const Chapter10YourProfession: React.FC<Chapter10Props> = ({
             </div>
           </section>
         )}
+
+        {/* Section Closing Bridge to Optional Explore More */}
+        <footer
+          className="pt-8 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+          style={{ borderColor: palette.border }}
+        >
+          <p className="text-sm font-sans" style={{ color: palette.textMuted }}>
+            All profiles above use U.S. BLS &amp; O*NET benchmarks across 271 occupations. Want a regional view outside the U.S.?
+          </p>
+          <a
+            href="#explore_india"
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold whitespace-nowrap shrink-0 hover:underline self-start sm:self-center"
+            style={{ color: palette.cyan }}
+          >
+            <span>Explore More: India Perspective</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+        </footer>
       </div>
     </article>
   );

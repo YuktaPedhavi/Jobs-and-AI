@@ -5,6 +5,7 @@ import { BookOpen } from 'lucide-react';
 
 interface Chapter5Props {
   onOpenEvidence: (id: string) => void;
+  embedded?: boolean;
 }
 
 type ProfessionId = 'teacher' | 'doctor' | 'designer' | 'support';
@@ -385,7 +386,10 @@ const ActivityPictogram: React.FC<{
   }
 };
 
-export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence }) => {
+export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({
+  onOpenEvidence,
+  embedded = false
+}) => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
@@ -415,18 +419,33 @@ export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence })
     setSelectedStep(1);
   };
 
-  return (
-    <article
-      id="ch05_real_workday"
-      className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
-      style={{
-        backgroundColor: palette.canvasBg,
-        borderColor: palette.border,
-        color: palette.textMain
-      }}
-    >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
-        {/* Compact Opening Header */}
+  const innerContent = (
+    <div className={embedded ? 'space-y-8' : 'max-w-5xl mx-auto px-4 sm:px-6 space-y-10'}>
+      {/* Opening Header */}
+      {embedded ? (
+        <div className="space-y-2 pt-4 border-t" style={{ borderColor: palette.border }}>
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <span
+              className="text-xs font-mono uppercase tracking-widest"
+              style={{ color: palette.cyan }}
+            >
+              In Practice — AI in a Real Workday
+            </span>
+            <span className="text-xs font-mono" style={{ color: palette.textMuted }}>
+              Illustrative 4-step workflow
+            </span>
+          </div>
+          <h3
+            className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight"
+            style={{ color: palette.textMain, textWrap: 'balance' }}
+          >
+            Where does AI fit into a working day?
+          </h3>
+          <p className="text-sm sm:text-base font-sans leading-relaxed max-w-2xl" style={{ color: palette.textMuted }}>
+            Explore where AI can assist—and where human judgement still matters.
+          </p>
+        </div>
+      ) : (
         <header className="space-y-3 max-w-3xl">
           <div
             className="flex items-center gap-2 text-xs font-mono tracking-wider"
@@ -451,6 +470,7 @@ export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence })
             Explore where AI can assist—and where human judgement still matters.
           </p>
         </header>
+      )}
 
         {/* Profession Selector */}
         <div
@@ -758,14 +778,33 @@ export const Chapter5RealWorkday: React.FC<Chapter5Props> = ({ onOpenEvidence })
           </div>
         </section>
 
-        {/* Simplified Editorial Takeaway */}
-        <p
-          className="text-base sm:text-lg font-sans font-medium"
-          style={{ color: palette.textMain }}
-        >
-          AI can assist with tasks. People still make important decisions.
-        </p>
-      </div>
+        {/* Simplified Editorial Takeaway (only standalone) */}
+        {!embedded && (
+          <p
+            className="text-base sm:text-lg font-sans font-medium"
+            style={{ color: palette.textMain }}
+          >
+            AI can assist with tasks. People still make important decisions.
+          </p>
+        )}
+    </div>
+  );
+
+  if (embedded) {
+    return innerContent;
+  }
+
+  return (
+    <article
+      id="ch05_real_workday"
+      className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
+      style={{
+        backgroundColor: palette.canvasBg,
+        borderColor: palette.border,
+        color: palette.textMain
+      }}
+    >
+      {innerContent}
     </article>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EvidenceBadge } from '../EvidenceBadge';
 import { useTheme } from '../../context/ThemeContext';
 import { ArrowRight } from 'lucide-react';
+import { Chapter8NewAdvantage } from './Chapter8NewAdvantage';
 
 interface Chapter7Props {
   onOpenEvidence: (id: string) => void;
@@ -165,7 +166,7 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
 
   return (
     <article
-      id="ch07_career_ladder"
+      id="ch06_careers_skills"
       className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
       style={{
         backgroundColor: palette.canvasBg,
@@ -184,21 +185,21 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
           >
             <span className="font-bold">06</span>
             <span aria-hidden="true">·</span>
-            <span>The Career Ladder Problem</span>
+            <span>Careers &amp; Human Skills</span>
           </div>
 
           <h2
             className="text-3xl sm:text-5xl font-display font-extrabold tracking-tight leading-[1.08]"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            If AI does beginner tasks, how do beginners learn?
+            What Skills Will Matter Next?
           </h2>
 
           <p
             className="text-base sm:text-xl font-sans leading-relaxed"
             style={{ color: palette.textMuted }}
           >
-            AI can change entry-level work, raising new questions about how people build experience.
+            Changing entry-level tasks reshape how beginners build experience—and shift which human capabilities become harder to replace.
           </p>
         </header>
 
@@ -863,7 +864,12 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
         </section>
 
         {/* =================================================================== */}
-        {/* 5. CONCISE CLOSING MESSAGE                                          */}
+        {/* 5. WORK VALUE SHIFT EXPLORER (EMBEDDED FROM CH08)                   */}
+        {/* =================================================================== */}
+        <Chapter8NewAdvantage embedded onOpenEvidence={onOpenEvidence} />
+
+        {/* =================================================================== */}
+        {/* 6. CONCISE CLOSING MESSAGE                                          */}
         {/* =================================================================== */}
         <footer
           className="pt-10 pb-2 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -873,15 +879,15 @@ export const Chapter7CareerLadder: React.FC<Chapter7Props> = ({ onOpenEvidence }
             className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight leading-snug max-w-3xl"
             style={{ color: palette.textMain, textWrap: 'balance' }}
           >
-            If AI changes beginner tasks, learning pathways may need to change too.
+            If AI changes beginner tasks, learning pathways and human judgement become even more important.
           </p>
 
           <a
-            href="#ch08_new_advantage"
+            href="#ch07_your_profession"
             className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold whitespace-nowrap shrink-0 hover:underline self-start sm:self-center"
             style={{ color: palette.lime }}
           >
-            <span>Next: What Becomes Valuable</span>
+            <span>Next: Explore Your Profession</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
         </footer>

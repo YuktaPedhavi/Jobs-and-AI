@@ -14,17 +14,15 @@ export interface ChapterMeta {
 }
 
 export const CHAPTER_LIST: ChapterMeta[] = [
-  { id: 'ch00_which_changes', num: 0, title: 'WHICH JOB CHANGES MORE?', shortTitle: 'Two Jobs', glyph: '⚖', thesis: 'Exposure is not the same as job loss or job growth.' },
-  { id: 'ch01_four_futures', num: 1, title: '271 JOBS. FOUR DIFFERENT FUTURES.', shortTitle: 'Four Futures', glyph: '✦', thesis: 'r = -0.09 between exposure and growth: almost no simple relationship.' },
-  { id: 'ch02_cognitive_reach', num: 2, title: 'WHAT KIND OF WORK DOES AI REACH FIRST?', shortTitle: 'Cognitive Fingerprint', glyph: '◈', thesis: 'Language models directly touch verbal and structured tasks first.' },
-  { id: 'ch03_three_lenses', num: 3, title: 'ONE JOB. THREE AI LENSES.', shortTitle: 'Three Lenses', glyph: '◎', thesis: 'There is no single, monolithic AI-risk percentage.' },
-  { id: 'ch04_possible_actual', num: 4, title: 'POSSIBLE ≠ ACTUAL.', shortTitle: 'Possible ≠ Actual', glyph: '⚑', thesis: 'Theoretical capability is constrained by real-world adoption friction.' },
-  { id: 'ch05_real_workday', num: 5, title: 'AI IN A REAL WORKDAY.', shortTitle: 'Workday Timelines', glyph: '◷', thesis: 'How AI redistributes real tasks in teaching, medicine, design, and support.' },
-  { id: 'ch06_faster_then_what', num: 6, title: 'FASTER. THEN WHAT?', shortTitle: 'Value Flow', glyph: '⚡', thesis: 'A faster worker does not automatically become a higher-paid worker.' },
-  { id: 'ch07_career_ladder', num: 7, title: 'THE CAREER LADDER MOVES.', shortTitle: 'Career Ladder', glyph: '🪜', thesis: 'When AI absorbs beginner tasks, how do novices build expert judgement?' },
-  { id: 'ch08_new_advantage', num: 8, title: 'WHAT BECOMES MORE VALUABLE?', shortTitle: 'Skill Constellation', glyph: '✸', thesis: 'Judgement, verification, domain expertise, and responsibility grow scarce.' },
-  { id: 'ch09_india_lens', num: 9, title: 'INDIA: SAME TECHNOLOGY, DIFFERENT STARTING POINT.', shortTitle: 'India Macro Lens', glyph: '✺', thesis: '26% high exposure = 14% complementary + 12% displacement risk.' },
-  { id: 'ch10_your_profession', num: 10, title: 'YOUR PROFESSION.', shortTitle: 'Atlas & Compare', glyph: '❖', thesis: 'Search 271 occupations, inspect work cards, and compare any two.' }
+  { id: 'ch00_introduction', num: 0, title: 'How Is AI Changing Work?', shortTitle: 'Introduction', glyph: '00', thesis: 'AI is changing what people do at work, but not every job in the same way.' },
+  { id: 'ch01_living_atlas', num: 1, title: 'Explore 271 Jobs', shortTitle: 'Living Atlas', glyph: '01', thesis: 'See how AI task exposure differs across 271 U.S. occupations.' },
+  { id: 'ch02_exposure_growth', num: 2, title: 'Does More AI Exposure Mean Fewer Jobs?', shortTitle: 'Exposure vs Growth', glyph: '02', thesis: 'r = −0.094: higher AI exposure does not automatically mean fewer jobs.' },
+  { id: 'ch03_understanding_tasks', num: 3, title: 'Which Parts of Work Can AI Change?', shortTitle: 'Understanding Tasks', glyph: '03', thesis: 'Language and structured drafting tasks show higher overlap than physical or interpersonal care.' },
+  { id: 'ch04_real_workplace', num: 4, title: 'What Can AI Do — and What Happens at Work?', shortTitle: 'Real Workplace', glyph: '04', thesis: 'Workplace adoption is shaped by practical constraints and human judgement.' },
+  { id: 'ch05_productivity', num: 5, title: 'AI Makes Tasks Faster. Who Benefits?', shortTitle: 'Productivity', glyph: '05', thesis: 'Task speedups vary across firms and do not automatically translate into higher pay.' },
+  { id: 'ch06_careers_skills', num: 6, title: 'What Skills Will Matter Next?', shortTitle: 'Careers & Skills', glyph: '06', thesis: 'Changing entry-level tasks shift how people build experience and judgement.' },
+  { id: 'ch07_your_profession', num: 7, title: 'What Does This Mean for Your Job?', shortTitle: 'Your Profession', glyph: '07', thesis: 'Search 271 occupations, inspect task profiles, and compare any two roles.' },
+  { id: 'explore_india', num: 8, title: 'Explore More: India Perspective', shortTitle: 'India Perspective', glyph: '+', thesis: 'IMF exposure estimates and changing skills in India (separate regional dataset).' }
 ];
 
 interface WorklineProps {
@@ -157,12 +155,14 @@ export const Workline: React.FC<WorklineProps> = ({
                     }}
                     data-cursor-interactive="true"
                   >
-                    {chapter.num}
+                    {chapter.glyph === '+' ? '+' : chapter.num}
                   </button>
 
                   {/* Flyout Hover Label */}
                   <div className="absolute left-9 top-1/2 -translate-y-1/2 hidden group-hover:flex items-center gap-2 px-3 py-1.5 bg-[#161C25] text-[#EEF2F6] text-xs font-sans rounded-md shadow-xl border border-[#222B38] pointer-events-none whitespace-nowrap z-50 animate-in fade-in zoom-in-95 duration-150">
-                    <span className="font-mono text-[#22D3EE] font-semibold">{chapter.num}</span>
+                    <span className="font-mono text-[#22D3EE] font-semibold">
+                      {chapter.glyph === '+' ? 'More' : `0${chapter.num}`}
+                    </span>
                     <span className="font-medium text-[#EEF2F6]">{chapter.title}</span>
                   </div>
                 </div>
@@ -228,14 +228,10 @@ export const Workline: React.FC<WorklineProps> = ({
           }}
           data-cursor-interactive="true"
         >
-          <span
-            className="inline-block w-2 h-2 rounded-full animate-pulse"
-            style={{ backgroundColor: isDark ? '#d7e63b' : '#1e5bb4' }}
-          />
           <span className="font-semibold" style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}>
-            CH {activeMeta.num}
+            {activeMeta.glyph === '+' ? 'MORE' : `0${activeMeta.num}`}
           </span>
-          <span className="font-sans truncate max-w-[120px]">{activeMeta.shortTitle}</span>
+          <span className="font-sans truncate max-w-[130px]">{activeMeta.shortTitle}</span>
           <span className="text-[10px] font-mono ml-0.5" style={{ color: isDark ? '#d7e63b' : '#1e5bb4' }}>
             MAP ↗
           </span>
@@ -309,12 +305,12 @@ export const Workline: React.FC<WorklineProps> = ({
                           isActive ? 'bg-[#22D3EE] text-[#0C1016]' : 'bg-[#1C2430] text-[#94A3B8] border border-[#222B38] group-hover:text-[#EEF2F6]'
                         }`}
                       >
-                        {c.num}
+                        {c.glyph}
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-xs font-semibold text-[#9bb2cf] uppercase">
-                            Chapter {c.num}
+                            {c.glyph === '+' ? 'Explore More' : `Section 0${c.num}`}
                           </span>
                           {isActive && (
                             <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-[#22D3EE] text-[#0C1016]">

@@ -226,7 +226,7 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
 
   return (
     <article
-      id="ch09_india_lens"
+      id="explore_india"
       className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
       style={{
         backgroundColor: palette.canvasBg,
@@ -241,10 +241,12 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
             className="flex flex-wrap items-center gap-2 text-xs font-mono tracking-wider"
             style={{ color: palette.cyan }}
           >
-            <span>India &amp; Global Labour</span>
+            <span className="font-bold">+</span>
+            <span aria-hidden="true">·</span>
+            <span>Explore More: India Perspective</span>
             <span aria-hidden="true">·</span>
             <span style={{ color: palette.textMuted }}>
-              IMF &amp; Deloitte–NASSCOM research
+              Separate IMF &amp; Deloitte–NASSCOM data
             </span>
           </div>
 
@@ -263,7 +265,7 @@ export const Chapter9IndiaLens: React.FC<Chapter9Props> = ({ onOpenEvidence }) =
           </p>
 
           <p className="text-xs font-sans" style={{ color: palette.textMuted }}>
-            Because the 271-occupation dataset is 83.6% U.S.-based, this section uses IMF and Deloitte–NASSCOM research for India.
+            Separate regional lens: because the main 271-occupation dataset is predominantly U.S.-based, this optional section draws on IMF and Deloitte–NASSCOM research for India.
           </p>
         </header>
 

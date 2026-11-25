@@ -193,10 +193,6 @@ export const OccupationToken: React.FC<OccupationTokenProps> = ({
         data-cursor-interactive="true"
       >
         <span
-          className="w-2 h-2 rounded-full animate-pulse"
-          style={{ backgroundColor: isDark ? '#d7e63b' : '#1e5bb4' }}
-        />
-        <span
           className="font-sans font-semibold truncate max-w-[120px] sm:max-w-[160px]"
           style={{ color: isDark ? '#f7faeb' : '#061329' }}
         >

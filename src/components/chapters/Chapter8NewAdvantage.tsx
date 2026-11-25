@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { EvidenceBadge } from '../EvidenceBadge';
+import { useTheme } from '../../context/ThemeContext';
 import {
-  Sparkles,
-  ArrowDownRight,
-  ArrowUpRight,
-  ShieldCheck,
-  CheckCircle2,
   TrendingDown,
   TrendingUp,
   Compass,
   Eye,
+  ShieldCheck,
+  CheckCircle2,
   Heart,
   Scale
 } from 'lucide-react';
 
 interface Chapter8Props {
   onOpenEvidence: (id: string) => void;
+  embedded?: boolean;
 }
 
 interface ValueShiftPair {
@@ -27,7 +26,7 @@ interface ValueShiftPair {
   };
   moreValuable: {
     title: string;
-    icon: any;
+    icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
     description: string;
     whyScarce: string;
     workplaceTest: string;
@@ -38,244 +37,319 @@ const VALUE_SHIFTS: ValueShiftPair[] = [
   {
     id: 'framing',
     lessValuable: {
-      title: 'Formulaic drafting & answers',
+      title: 'Formulaic drafting',
       description: 'Writing generic memos, templated emails, and introductory paragraphs.',
-      reason: 'LLMs generate infinite fluent prose in under two seconds.'
+      reason: 'Language models generate fluent boilerplate in seconds.'
     },
     moreValuable: {
       title: 'Framing the right question',
       icon: Compass,
-      description: 'Decomposing ambiguous, messy real-world challenges into solvable problem statements.',
-      whyScarce: 'Models cannot invent direction; they require sharp, context-aware prompt steering.',
-      workplaceTest: 'A strategy analyst framing a complex market expansion into five crisp, testable hypotheses.'
+      description: 'Breaking ambiguous, real-world problems into clear, testable questions.',
+      whyScarce: 'Models need clear direction and context before they can assist effectively.',
+      workplaceTest: 'A strategy analyst translating an unclear market goal into five testable hypotheses.'
     }
   },
   {
     id: 'taste',
     lessValuable: {
-      title: 'Generating 50 raw variations',
-      description: 'Churning out dozens of layout options, color swatches, or copywriting drafts.',
-      reason: 'Generative models make surface variations free and infinite.'
+      title: 'Generating raw variations',
+      description: 'Producing dozens of routine layout options, color palettes, or copy drafts.',
+      reason: 'Software makes producing surface variations fast and inexpensive.'
     },
     moreValuable: {
-      title: 'Discerning taste & selection',
+      title: 'Taste & selection',
       icon: Eye,
-      description: 'Knowing what to discard and having the cultural discernment to choose the one right solution.',
-      whyScarce: 'When generation is free, editing and curated taste become the sole differentiator.',
-      workplaceTest: 'A creative director rejecting 49 AI logo iterations to back the single metaphor that resonates with the brand.'
+      description: 'Knowing what to discard and choosing the solution that genuinely fits the audience.',
+      whyScarce: 'When options are plentiful, judgement and editing become the differentiator.',
+      workplaceTest: 'A creative director discarding 49 drafts to refine the single concept that fits the brand.'
     }
   },
   {
     id: 'verification',
     lessValuable: {
-      title: 'Trusting plausible syntax',
-      description: 'Assuming fluent text or generated code is factual without auditing.',
-      reason: 'Hallucinations and subtle bugs fool generalists and introduce enterprise risk.'
+      title: 'Accepting plausible outputs',
+      description: 'Passing along fluent text or generated code without checking accuracy.',
+      reason: 'Unchecked errors and fabricated citations create real workplace risk.'
     },
     moreValuable: {
-      title: 'Real-world verification & audits',
+      title: 'Verification & auditing',
       icon: ShieldCheck,
-      description: 'Treating unverified AI outputs as an ungrounded liability and rigorously fact-checking citations.',
-      whyScarce: 'Generating plausible claims costs pennies; validating their truth requires deep rigor.',
-      workplaceTest: 'A paralegal cross-checking every statute cited in an AI draft to confirm it is currently valid law.'
+      description: 'Treating AI output as a first draft and verifying claims, edge cases, and sources.',
+      whyScarce: 'Generating plausible claims is cheap; confirming truth takes domain rigor.',
+      workplaceTest: 'A legal assistant checking every statute in an AI draft against current law.'
     }
   },
   {
     id: 'context',
     lessValuable: {
-      title: 'Memorizing static rules',
-      description: 'Reciting textbook definitions and standardized procedural checklists.',
-      reason: 'Retrieval systems access any documentation or manual instantaneously.'
+      title: 'Reciting static rules',
+      description: 'Memorizing textbook definitions and standard procedural checklists.',
+      reason: 'Search and retrieval tools surface standard reference material immediately.'
     },
     moreValuable: {
-      title: 'Deep domain context & nuance',
+      title: 'Deep domain context',
       icon: CheckCircle2,
-      description: 'Understanding tacit institutional knowledge, unwritten politics, and edge cases.',
-      whyScarce: 'Models lack the physical experience and private corporate history behind decisions.',
-      workplaceTest: 'A plant engineer recognizing that an anomalous sensor reading is caused by local humidity, not engine failure.'
+      description: 'Applying local institutional knowledge, unwritten constraints, and edge-case awareness.',
+      whyScarce: 'Systems lack lived workplace context and real-world physical experience.',
+      workplaceTest: 'A plant engineer spotting that an unusual sensor spike is caused by local humidity.'
     }
   },
   {
     id: 'relationships',
     lessValuable: {
-      title: 'Routine customer responses',
+      title: 'Routine status replies',
       description: 'Answering common FAQs and sending scripted status notifications.',
-      reason: 'Chatbots resolve baseline repetitive queries 24/7 at negligible cost.'
+      reason: 'Automated support resolves repetitive baseline queries at low cost.'
     },
     moreValuable: {
-      title: 'Communication & human trust',
+      title: 'Trust & communication',
       icon: Heart,
-      description: 'Reading emotional temperature, calming high-stakes conflicts, and building mutual trust.',
-      whyScarce: 'Synthesized politeness cannot replace authentic human presence in vulnerable moments.',
-      workplaceTest: 'A wealth advisor guiding an anxious family through estate planning during a personal medical crisis.'
+      description: 'Reading emotional nuance, calming conflicts, and earning lasting stakeholder trust.',
+      whyScarce: 'Scripted politeness cannot replace accountable human empathy in sensitive moments.',
+      workplaceTest: 'An advisor guiding a worried family through difficult financial decisions.'
     }
   },
   {
     id: 'responsibility',
     lessValuable: {
-      title: 'Executing without liability',
-      description: 'Producing intermediate work products without personal skin in the game.',
-      reason: 'Software cannot be held legally or morally liable when systems fail.'
+      title: 'Drafting without sign-off',
+      description: 'Producing intermediate materials with no responsibility for the final outcome.',
+      reason: 'Software cannot hold professional licenses or legal accountability.'
     },
     moreValuable: {
-      title: 'Ethical & legal responsibility',
+      title: 'Ethical & legal accountability',
       icon: Scale,
-      description: 'Standing behind the decision with professional license, fiduciary duty, and reputation.',
-      whyScarce: 'Algorithms cannot go to court, lose their medical license, or accept fiduciary blame.',
-      workplaceTest: 'A chief medical officer signing off on diagnostic protocol with personal legal accountability.'
+      description: 'Standing behind high-stakes decisions with professional duty and judgement.',
+      whyScarce: 'Organizations and regulators still require accountable human decision-makers.',
+      workplaceTest: 'A clinician reviewing diagnostic support tools and owning the care plan.'
     }
   }
 ];
 
-export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({ onOpenEvidence }) => {
+export const Chapter8NewAdvantage: React.FC<Chapter8Props> = ({
+  onOpenEvidence,
+  embedded = false
+}) => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const [selectedShiftId, setSelectedShiftId] = useState<string>('framing');
 
-  const activeShift = VALUE_SHIFTS.find((s) => s.id === selectedShiftId) || VALUE_SHIFTS[0];
+  const activeShift =
+    VALUE_SHIFTS.find((s) => s.id === selectedShiftId) || VALUE_SHIFTS[0];
   const IconComponent = activeShift.moreValuable.icon;
 
-  return (
-    <article
-      id="ch08_new_advantage"
-      className="scroll-mt-12 py-16 sm:py-24 border-b border-[#1E2633] relative"
-    >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
-        {/* Chapter Header */}
-        <header className="space-y-3">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#161C25] border border-[#222B38] text-[#22D3EE] text-xs font-mono">
-            <span className="font-bold">05</span>
-            <span>WHAT BECOMES MORE VALUABLE?</span>
-          </div>
+  const palette = {
+    canvasBg: isDark ? '#061329' : '#f8f7f2',
+    surfaceBg: isDark ? '#0b1f3c' : '#ffffff',
+    surfaceSubtle: isDark ? '#071731' : '#f1efe6',
+    border: isDark ? '#163560' : '#d5dde7',
+    textMain: isDark ? '#f7faeb' : '#061329',
+    textMuted: isDark ? '#9bb2cf' : '#475e77',
+    cyan: isDark ? '#22d3ee' : '#0284c7',
+    amber: isDark ? '#f59e0b' : '#b45309',
+    coral: isDark ? '#fb7185' : '#e11d48',
+    lime: isDark ? '#d7e63b' : '#5c6800'
+  };
 
-          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-[#EEF2F6] tracking-tight leading-tight">
-            When drafting is cheap, judgement becomes the prize.
-          </h2>
-
-          <p className="text-base sm:text-lg text-[#94A3B8] font-sans max-w-3xl leading-relaxed">
-            The World Economic Forum finds that <strong className="text-[#EEF2F6] font-semibold">59 out of 100 workers</strong> will need upskilling by 2030. As routine execution commoditizes, value shifts decisively from doing the mechanics to framing, verifying, and taking responsibility.
+  const innerContent = (
+    <div className={embedded ? 'space-y-6' : 'max-w-5xl mx-auto px-4 sm:px-6 space-y-8'}>
+      {/* Section Header */}
+      <div
+        className={`flex flex-col md:flex-row md:items-end justify-between gap-4 ${
+          embedded ? 'pt-6 border-t' : ''
+        }`}
+        style={embedded ? { borderColor: palette.border } : undefined}
+      >
+        <div className="space-y-1.5 max-w-2xl">
+          <span
+            className="text-xs font-mono uppercase tracking-widest block"
+            style={{ color: palette.cyan }}
+          >
+            The Value Shift — Skills to Develop
+          </span>
+          <h3
+            className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight"
+            style={{ color: palette.textMain, textWrap: 'balance' }}
+          >
+            When drafting gets cheaper, human judgement stands out.
+          </h3>
+          <p className="text-sm font-sans leading-relaxed" style={{ color: palette.textMuted }}>
+            World Economic Forum survey estimates suggest{' '}
+            <strong className="font-semibold" style={{ color: palette.textMain }}>
+              59 out of 100 workers
+            </strong>{' '}
+            will need retraining by 2030. Select a capability below to see how value shifts from routine execution to human judgement.
           </p>
-        </header>
-
-        {/* WEF Macro Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-          <div className="p-4 bg-[#161C25] rounded-xl border border-[#222B38]">
-            <span className="text-[10px] text-[#94A3B8] uppercase block">Retraining Demand</span>
-            <span className="text-2xl font-bold text-[#22D3EE] mt-1 block">59 / 100</span>
-            <span className="text-[11px] text-[#94A3B8]">workers require retraining before 2030 (WEF 2025)</span>
-          </div>
-
-          <div className="p-4 bg-[#161C25] rounded-xl border border-[#222B38]">
-            <span className="text-[10px] text-[#94A3B8] uppercase block">Talent Bottleneck</span>
-            <span className="text-2xl font-bold text-[#F59E0B] mt-1 block">63%</span>
-            <span className="text-[11px] text-[#94A3B8]">of employers report skill mismatch as primary barrier</span>
-          </div>
-
-          <div className="p-4 bg-[#161C25] rounded-xl border border-[#222B38]">
-            <span className="text-[10px] text-[#94A3B8] uppercase block">Enterprise Response</span>
-            <span className="text-2xl font-bold text-[#10B981] mt-1 block">77%</span>
-            <span className="text-[11px] text-[#94A3B8]">of firms investing heavily in internal upskilling</span>
-          </div>
         </div>
 
-        {/* Clear Before / After Comparison Interactive Layout */}
-        <div className="bg-[#161C25] p-6 sm:p-8 rounded-2xl border border-[#222B38] space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#222B38] pb-4">
-            <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#22D3EE]">
-                The Value Inversion
-              </span>
-              <h3 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6] mt-0.5">
-                The 6 Essential Human Shifts
-              </h3>
-            </div>
-            <EvidenceBadge id="C016" onClick={onOpenEvidence} labelOverride="WEF 2025 · Skills Outlook" />
-          </div>
+        <div className="shrink-0">
+          <EvidenceBadge
+            id="C016"
+            onClick={onOpenEvidence}
+            labelOverride="C016 · WEF 2025 (59/100)"
+          />
+        </div>
+      </div>
 
-          {/* Interactive Shift Selector Chips */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-            {VALUE_SHIFTS.map((shift) => {
-              const isSelected = selectedShiftId === shift.id;
-              const SIcon = shift.moreValuable.icon;
-              return (
-                <button
-                  key={shift.id}
-                  onClick={() => setSelectedShiftId(shift.id)}
-                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between h-20 ${
-                    isSelected
-                      ? 'bg-[#22D3EE]/10 border-[#22D3EE] ring-2 ring-[#22D3EE]/30'
-                      : 'bg-[#0C1016] border-[#222B38] hover:border-[#38BDF8] hover:bg-[#1A222E]'
-                  }`}
+      {/* Interactive 6-Shift Explorer */}
+      <div
+        className="rounded-2xl border p-5 sm:p-7 space-y-6"
+        style={{
+          backgroundColor: palette.surfaceBg,
+          borderColor: palette.border
+        }}
+      >
+        {/* Selectable Skill Chips */}
+        <div
+          role="tablist"
+          aria-label="Human skills gaining value"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2"
+        >
+          {VALUE_SHIFTS.map((shift) => {
+            const isSelected = selectedShiftId === shift.id;
+            const SIcon = shift.moreValuable.icon;
+            return (
+              <button
+                key={shift.id}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => setSelectedShiftId(shift.id)}
+                className="p-3 min-h-[76px] rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between gap-2 focus:outline-none focus-visible:ring-2"
+                style={{
+                  backgroundColor: isSelected
+                    ? palette.surfaceSubtle
+                    : palette.surfaceBg,
+                  borderColor: isSelected ? palette.cyan : palette.border,
+                  boxShadow: isSelected ? `0 0 0 1px ${palette.cyan}` : 'none'
+                }}
+              >
+                <SIcon
+                  className="w-4 h-4 shrink-0"
+                  style={{ color: isSelected ? palette.cyan : palette.textMuted }}
+                />
+                <span
+                  className="font-sans font-semibold text-xs leading-snug block"
+                  style={{ color: palette.textMain }}
                 >
-                  <SIcon className={`w-4 h-4 ${isSelected ? 'text-[#22D3EE]' : 'text-[#94A3B8]'}`} />
-                  <span className="font-display font-extrabold text-xs text-[#EEF2F6] leading-tight">
-                    {shift.moreValuable.title}
-                  </span>
-                </button>
-              );
-            })}
+                  {shift.moreValuable.title}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Side-by-Side Contrast */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Becoming Routine */}
+          <div
+            className="p-5 rounded-xl border space-y-3"
+            style={{
+              backgroundColor: palette.surfaceSubtle,
+              borderColor: palette.border
+            }}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <span
+                className="text-xs font-mono font-bold uppercase tracking-wider inline-flex items-center gap-1.5"
+                style={{ color: palette.coral }}
+              >
+                <TrendingDown className="w-3.5 h-3.5" />
+                <span>More Routine</span>
+              </span>
+              <span className="text-[11px] font-mono" style={{ color: palette.textMuted }}>
+                Easier to automate
+              </span>
+            </div>
+
+            <div
+              className="text-base sm:text-lg font-sans font-semibold"
+              style={{ color: palette.textMain }}
+            >
+              {activeShift.lessValuable.title}
+            </div>
+
+            <p className="text-sm font-sans leading-relaxed" style={{ color: palette.textMuted }}>
+              {activeShift.lessValuable.description}
+            </p>
+
+            <div
+              className="pt-3 border-t text-xs font-sans"
+              style={{ borderColor: palette.border, color: palette.textMuted }}
+            >
+              <strong style={{ color: palette.textMain }}>Why it shifts: </strong>
+              {activeShift.lessValuable.reason}
+            </div>
           </div>
 
-          {/* Selected Before / After Deep Dive Comparison Card */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
-            {/* What Becomes LESS Valuable */}
-            <div className="p-6 rounded-xl bg-[#0C1016] border border-[#F43F5E]/30 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#F43F5E] flex items-center gap-1.5 font-bold">
-                  <TrendingDown className="w-4 h-4" /> What Becomes Less Valuable
-                </span>
-                <span className="text-[10px] font-mono text-[#94A3B8]">Commoditized by AI</span>
-              </div>
+          {/* Gaining Human Value */}
+          <div
+            className="p-5 rounded-xl border space-y-3"
+            style={{
+              backgroundColor: palette.surfaceSubtle,
+              borderColor: palette.cyan
+            }}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <span
+                className="text-xs font-mono font-bold uppercase tracking-wider inline-flex items-center gap-1.5"
+                style={{ color: palette.cyan }}
+              >
+                <TrendingUp className="w-3.5 h-3.5" />
+                <span>Gaining Human Value</span>
+              </span>
+              <span className="text-[11px] font-mono" style={{ color: palette.cyan }}>
+                Harder to replace
+              </span>
+            </div>
 
-              <h4 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
-                {activeShift.lessValuable.title}
-              </h4>
-
-              <p className="text-sm text-[#94A3B8] leading-relaxed">
-                {activeShift.lessValuable.description}
-              </p>
-
-              <div className="p-3 bg-[#161C25] rounded-lg border border-[#222B38] text-xs text-[#94A3B8]">
-                <strong className="text-[#EEF2F6] block mb-0.5 font-sans">Why value declines:</strong>
-                <span>{activeShift.lessValuable.reason}</span>
+            <div className="flex items-center gap-2.5">
+              <IconComponent
+                className="w-4 h-4 shrink-0"
+                style={{ color: palette.cyan }}
+              />
+              <div
+                className="text-base sm:text-lg font-sans font-semibold"
+                style={{ color: palette.textMain }}
+              >
+                {activeShift.moreValuable.title}
               </div>
             </div>
 
-            {/* What Becomes MORE Valuable */}
-            <div className="p-6 rounded-xl bg-[#0C1016] border border-[#22D3EE]/40 space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#22D3EE] flex items-center gap-1.5 font-bold">
-                  <TrendingUp className="w-4 h-4" /> What Becomes More Valuable
-                </span>
-                <span className="text-[10px] font-mono text-[#22D3EE] font-semibold">Gains Scarcity Premium</span>
-              </div>
+            <p className="text-sm font-sans leading-relaxed" style={{ color: palette.textMain }}>
+              {activeShift.moreValuable.description}
+            </p>
 
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#161C25] border border-[#222B38] flex items-center justify-center text-[#22D3EE]">
-                  <IconComponent className="w-4 h-4" />
-                </div>
-                <h4 className="text-xl font-display font-extrabold tracking-tight text-[#EEF2F6]">
-                  {activeShift.moreValuable.title}
-                </h4>
-              </div>
-
-              <p className="text-sm text-[#EEF2F6] leading-relaxed">
-                {activeShift.moreValuable.description}
-              </p>
-
-              <div className="space-y-2 text-xs">
-                <div className="p-3 bg-[#161C25] rounded-lg border border-[#222B38] text-[#94A3B8]">
-                  <strong className="text-[#22D3EE] block mb-0.5 font-sans">Why it becomes scarce:</strong>
-                  <span>{activeShift.moreValuable.whyScarce}</span>
-                </div>
-
-                <div className="p-3 bg-[#161C25] rounded-lg border border-[#222B38] text-[#94A3B8]">
-                  <strong className="text-[#EEF2F6] block mb-0.5 font-sans">Everyday workplace test:</strong>
-                  <span>{activeShift.moreValuable.workplaceTest}</span>
-                </div>
+            <div
+              className="pt-3 border-t text-xs font-sans space-y-1.5"
+              style={{ borderColor: palette.border, color: palette.textMuted }}
+            >
+              <div>
+                <strong style={{ color: palette.cyan }}>In practice: </strong>
+                {activeShift.moreValuable.workplaceTest}
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+
+  if (embedded) {
+    return innerContent;
+  }
+
+  return (
+    <article
+      id="ch06_careers_skills_value"
+      className="scroll-mt-12 py-16 sm:py-24 border-b relative transition-colors duration-300"
+      style={{
+        backgroundColor: palette.canvasBg,
+        borderColor: palette.border,
+        color: palette.textMain
+      }}
+    >
+      {innerContent}
     </article>
   );
 };
